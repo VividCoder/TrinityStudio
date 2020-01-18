@@ -30,10 +30,18 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrinityIDE));
-            this.dockingManager1 = new Syncfusion.Windows.Forms.Tools.DockingManager(this.components);
             this.dockingClientPanel1 = new Syncfusion.Windows.Forms.Tools.DockingClientPanel();
+            this.dockingManager1 = new Syncfusion.Windows.Forms.Tools.DockingManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dockingManager1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // dockingClientPanel1
+            // 
+            this.dockingClientPanel1.Location = new System.Drawing.Point(0, 0);
+            this.dockingClientPanel1.Name = "dockingClientPanel1";
+            this.dockingClientPanel1.Size = new System.Drawing.Size(800, 450);
+            this.dockingClientPanel1.SizeToFit = true;
+            this.dockingClientPanel1.TabIndex = 0;
             // 
             // dockingManager1
             // 
@@ -52,20 +60,14 @@
             this.dockingManager1.CaptionButtons.Add(new Syncfusion.Windows.Forms.Tools.CaptionButton(Syncfusion.Windows.Forms.Tools.CaptionButtonType.Restore, "RestoreButton"));
             this.dockingManager1.CaptionButtons.Add(new Syncfusion.Windows.Forms.Tools.CaptionButton(Syncfusion.Windows.Forms.Tools.CaptionButtonType.Menu, "MenuButton"));
             // 
-            // dockingClientPanel1
-            // 
-            this.dockingClientPanel1.Location = new System.Drawing.Point(0, 0);
-            this.dockingClientPanel1.Name = "dockingClientPanel1";
-            this.dockingClientPanel1.Size = new System.Drawing.Size(800, 450);
-            this.dockingClientPanel1.SizeToFit = true;
-            this.dockingClientPanel1.TabIndex = 0;
-            // 
             // TrinityIDE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.dockingClientPanel1);
+            this.Cursor = System.Windows.Forms.Cursors.Default;
+            this.IsMdiContainer = true;
             this.Name = "TrinityIDE";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.dockingManager1)).EndInit();
@@ -74,9 +76,8 @@
         }
 
         #endregion
-
-        private Syncfusion.Windows.Forms.Tools.DockingManager dockingManager1;
         private Syncfusion.Windows.Forms.Tools.DockingClientPanel dockingClientPanel1;
+        private Syncfusion.Windows.Forms.Tools.DockingManager dockingManager1;
     }
 }
 

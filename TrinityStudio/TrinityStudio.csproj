@@ -36,6 +36,12 @@
     <Reference Include="EnvDTE, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="OpenTK, Version=3.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <HintPath>packages\OpenTK.3.1.0\lib\net20\OpenTK.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK.GLControl, Version=3.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <HintPath>packages\OpenTK.GLControl.3.1.0\lib\net20\OpenTK.GLControl.dll</HintPath>
+    </Reference>
     <Reference Include="Syncfusion.Grid.Base, Version=17.4460.0.39, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.Grid.Windows, Version=17.4460.0.39, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.Shared.Base, Version=17.4460.0.39, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
@@ -75,6 +81,12 @@
     <Compile Include="Forms\Browser\Content\ContentBrowser.Designer.cs">
       <DependentUpon>ContentBrowser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\View\Engine\2D\TrinityView2D.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\View\Engine\2D\TrinityView2D.Designer.cs">
+      <DependentUpon>TrinityView2D.cs</DependentUpon>
+    </Compile>
     <Compile Include="TrinityIDE.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +107,9 @@
     <EmbeddedResource Include="Forms\Feedback\ConsoleOutput.resx">
       <DependentUpon>ConsoleOutput.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\View\Engine\2D\TrinityView2D.resx">
+      <DependentUpon>TrinityView2D.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TrinityIDE.resx">
       <DependentUpon>TrinityIDE.cs</DependentUpon>
     </EmbeddedResource>
@@ -107,6 +122,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="OpenTK.dll.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -10,29 +10,51 @@ using System.Windows.Forms;
 using TrinityStudio.Forms;
 using TrinityStudio.Forms.Feedback;
 using TrinityStudio.Forms.Browser.Content;
-using WeifenLuo;
-using WeifenLuo.WinFormsUI;
-using WeifenLuo.WinFormsUI.Docking;
+using TrinityStudio.Forms.View.Engine._2D;
 namespace TrinityStudio
 {
     public partial class TrinityIDE : Form
     {
         public static ConsoleOutput FormConsoleOutput;
         public static ContentBrowser FormContentBrowse;
+        public static TrinityView2D FormView2D;
         public TrinityIDE()
         {
             InitializeComponent();
-            //    FormConsoleOutput = new ConsoleOutput();
-            //      FormConsoleOutput.Show(this.dockPanel1, DockState.DockBottom);
 
-            //      FormConsoleOutput.DebugMsg("Engine initiated.");
+
             FormConsoleOutput = new ConsoleOutput();
             FormConsoleOutput.Show();
-            this.dockingManager1.DockControl(FormConsoleOutput, this, Syncfusion.Windows.Forms.Tools.DockingStyle.Bottom, 150);
+            dockingManager1.DockControl(FormConsoleOutput, this, Syncfusion.Windows.Forms.Tools.DockingStyle.Bottom,150);
+            
+            //   FormConsoleOutput = new ConsoleOutput();
+            //     FormConsoleOutput.Show(this.dockPanel1, DockState.DockBottom);
 
-            FormContentBrowse = new ContentBrowser();
-            FormContentBrowse.Show();
-            this.dockingManager1.DockControl(FormContentBrowse, FormConsoleOutput, Syncfusion.Windows.Forms.Tools.DockingStyle.Tabbed, 150);
+
+            //      FormConsoleOutput.DebugMsg("Engine initiated.");
+
+
+            //FormContentBrowse = new ContentBrowser();
+            //FormContentBrowse.Show();
+            //this.dockingManager1.DockControl(FormContentBrowse,this, Syncfusion.Windows.Forms.Tools.DockingStyle.Bottom, 150);
+            //this.dockingManager1.dock
+
+
+
+            //this.dockingManager1.DockAsDocument(FormContentBrowse);
+
+           //FormConsoleOutput = new ConsoleOutput();
+           //FormConsoleOutput.Show();
+           // this.dockingManager1.DockAsDocument(FormConsoleOutput);
+             
+
+
+
+          //  FormConsoleOutput.DebugMsg("Starting Trinity Studio IDE.");
+
+    //        FormView2D = new TrinityView2D();
+  //          FormView2D.Show();
+//            this.dockingManager1.DockControl(FormView2D, this, Syncfusion.Windows.Forms.Tools.DockingStyle.Top, 400);
 
         }
 

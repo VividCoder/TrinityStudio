@@ -31,7 +31,7 @@
             this.textBoxExt1 = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.ConsoleTab = new Syncfusion.Windows.Forms.Tools.TabControlAdv();
             this.DebugTab = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.debugText = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.textBoxExt1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ConsoleTab)).BeginInit();
             this.ConsoleTab.SuspendLayout();
@@ -63,7 +63,7 @@
             // DebugTab
             // 
             this.DebugTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.DebugTab.Controls.Add(this.richTextBox1);
+            this.DebugTab.Controls.Add(this.debugText);
             this.DebugTab.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.DebugTab.Image = null;
             this.DebugTab.ImageSize = new System.Drawing.Size(16, 16);
@@ -75,23 +75,22 @@
             this.DebugTab.Text = "Debug Output";
             this.DebugTab.ThemesEnabled = false;
             // 
-            // richTextBox1
+            // debugText
             // 
-            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox1.Location = new System.Drawing.Point(0, 0);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(764, 142);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "";
+            this.debugText.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.debugText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.debugText.Location = new System.Drawing.Point(0, 0);
+            this.debugText.Name = "debugText";
+            this.debugText.Size = new System.Drawing.Size(764, 142);
+            this.debugText.TabIndex = 0;
+            this.debugText.Text = "";
             // 
             // ConsoleOutput
             // 
             this.ClientSize = new System.Drawing.Size(767, 166);
             this.Controls.Add(this.ConsoleTab);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MaximizeBox = false;
             this.Name = "ConsoleOutput";
-            this.ShowInTaskbar = false;
             ((System.ComponentModel.ISupportInitialize)(this.textBoxExt1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ConsoleTab)).EndInit();
             this.ConsoleTab.ResumeLayout(false);
@@ -105,6 +104,6 @@
         private Syncfusion.Windows.Forms.Tools.TextBoxExt textBoxExt1;
         private Syncfusion.Windows.Forms.Tools.TabControlAdv ConsoleTab;
         private Syncfusion.Windows.Forms.Tools.TabPageAdv DebugTab;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox debugText;
     }
 }

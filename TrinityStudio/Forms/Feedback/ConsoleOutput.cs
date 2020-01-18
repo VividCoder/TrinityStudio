@@ -28,6 +28,11 @@ namespace TrinityStudio.Forms.Feedback
         public void DebugMsg(string text)
         {
             Lines.Add(text);
+
+
+
+            debugText.Text = debugText.Text = "\n" + text;
+
             ///
             //Text = Text + text + "\n";
         //    richTextBox1.Text = richTextBox1.Text + text + "\n";
