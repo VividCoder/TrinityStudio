@@ -8,14 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TrinityEditor.Controls.Feedback
+namespace TrinityEditor.Controls.GL
 {
-    public partial class ConsoleOutput : WeifenLuo.WinFormsUI.Docking.DockContent
+    public partial class GLView : OpenTK.GLControl
     {
-        public ConsoleOutput()
+        public GLView()
         {
             InitializeComponent();
-            Text = "Console";
         }
     }
 }

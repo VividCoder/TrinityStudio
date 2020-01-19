@@ -8,14 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TrinityEditor.Controls.Feedback
+namespace TrinityEditor.Controls.View
 {
-    public partial class ConsoleOutput : WeifenLuo.WinFormsUI.Docking.DockContent
+    public partial class GameView : WeifenLuo.WinFormsUI.Docking.DockContent
     {
-        public ConsoleOutput()
+        public GameView()
         {
             InitializeComponent();
-            Text = "Console";
+            Text = "Game View";
         }
     }
 }
