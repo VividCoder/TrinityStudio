@@ -9,12 +9,26 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TrinityEditor.Controls.Feedback;
 using TrinityEditor.Controls.View;
+using TrinityEditor.Controls.Graph;
+using TrinityEditor.Controls.Graph._2D;
+using TrinityEngine.Graph;
+
 namespace TrinityEditor
 {
+
+
     public partial class TrinityEdit : Form
     {
         public static ConsoleOutput CConsole;
         public static GameView CGameView;
+        public static GraphTree CGraphTree;
+        public static GameGraph GGraph;
+
+        public static void NewMap()
+        {
+
+        }
+
         public TrinityEdit()
         {
             InitializeComponent();
@@ -22,11 +36,22 @@ namespace TrinityEditor
             CConsole = new ConsoleOutput();
             CConsole.Show(this.dockPanel1, WeifenLuo.WinFormsUI.Docking.DockState.DockBottom);
 
-            CGameView = new Controls.View._2D.GameViewMap();
-            CGameView.Show(this.dockPanel1, WeifenLuo.WinFormsUI.Docking.DockState.Document);
-        
+            Begin2DMapMode();
         }
 
+        private void Begin2DMapMode()
+        {
+            CGameView = new Controls.View._2D.GameViewMap();
+            CGameView.Show(this.dockPanel1, WeifenLuo.WinFormsUI.Docking.DockState.Document);
+            CGraphTree = new Graph2D();
+            CGraphTree.Show(this.dockPanel1, WeifenLuo.WinFormsUI.Docking.DockState.DockLeft);
+
+            GGraph = new GameGraph2D();
+
+            CGraphTree.SetGameGraph(GGraph);
+
+
+        }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {

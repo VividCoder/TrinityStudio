@@ -91,6 +91,10 @@
     <Compile Include="Framebuffer\FrameBufferColor.cs" />
     <Compile Include="Framebuffer\FrameBufferCube.cs" />
     <Compile Include="Framebuffer\FrameBufferMRT.cs" />
+    <Compile Include="Graph\GameGraph.cs" />
+    <Compile Include="Graph\GameGraph2D.cs" />
+    <Compile Include="Graph\GraphNode.cs" />
+    <Compile Include="Graph\GraphNode2D.cs" />
     <Compile Include="Help\IOHelp.cs" />
     <Compile Include="Map\GraphMarker.cs" />
     <Compile Include="Map\Layer\MapLayer.cs" />
