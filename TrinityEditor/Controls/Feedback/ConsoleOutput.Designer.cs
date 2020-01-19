@@ -1,4 +1,4 @@
-﻿namespace TrinityEditor.Forms.Feedback
+﻿namespace TrinityEditor.Controls.Feedback
 {
     partial class ConsoleOutput
     {
@@ -36,18 +36,17 @@
             this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richTextBox1.Location = new System.Drawing.Point(0, 0);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(356, 334);
+            this.richTextBox1.Size = new System.Drawing.Size(284, 261);
             this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "Testing\n\n\nTesting 3433\n\n\nfwefwe";
-            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            this.richTextBox1.Text = "Testing\n\n\nwefwefe\n\n\nwefwefwe";
             // 
             // ConsoleOutput
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(284, 261);
             this.Controls.Add(this.richTextBox1);
             this.Name = "ConsoleOutput";
-            this.Size = new System.Drawing.Size(356, 334);
             this.ResumeLayout(false);
 
         }
