@@ -11,10 +11,10 @@ using TrinityEditor.Controls.Feedback;
 
 namespace TrinityEditor
 {
-    public partial class Form1 : Form
+    public partial class TrinityEditor : Form
     {
         public static ConsoleOutput CConsole;
-        public Form1()
+        public TrinityEditor()
         {
             InitializeComponent();
 
