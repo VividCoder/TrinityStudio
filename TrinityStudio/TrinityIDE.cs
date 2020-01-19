@@ -52,9 +52,9 @@ namespace TrinityStudio
 
           //  FormConsoleOutput.DebugMsg("Starting Trinity Studio IDE.");
 
-    //        FormView2D = new TrinityView2D();
-  //          FormView2D.Show();
-//            this.dockingManager1.DockControl(FormView2D, this, Syncfusion.Windows.Forms.Tools.DockingStyle.Top, 400);
+            FormView2D = new TrinityView2D();
+            FormView2D.Show();
+            this.dockingManager1.DockControl(FormView2D, this, Syncfusion.Windows.Forms.Tools.DockingStyle.Top, 200);
 
         }
 
