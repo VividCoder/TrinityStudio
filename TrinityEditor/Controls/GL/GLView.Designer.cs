@@ -1,4 +1,4 @@
-﻿namespace TrinityEditor.Controls.GL
+﻿namespace TrinityEditor.Controls.Graphics
 {
     partial class GLView
     {
@@ -28,8 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // GLView
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Name = "GLView";
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.GLView_Paint);
+            this.ResumeLayout(false);
+
         }
 
         #endregion

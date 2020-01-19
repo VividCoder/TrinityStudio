@@ -93,6 +93,12 @@
     <EmbeddedResource Include="Controls\Feedback\ConsoleOutput.resx">
       <DependentUpon>ConsoleOutput.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\GL\GLView.resx">
+      <DependentUpon>GLView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\View\2D\MapView.resx">
+      <DependentUpon>MapView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TrinityEditor.resx">
       <DependentUpon>TrinityEditor.cs</DependentUpon>
     </EmbeddedResource>

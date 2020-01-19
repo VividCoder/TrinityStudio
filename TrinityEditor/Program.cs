@@ -16,7 +16,7 @@ namespace TrinityEditor
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TrinityEditor());
+            Application.Run(new TrinityEdit());
         }
     }
 }

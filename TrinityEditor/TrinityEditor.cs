@@ -11,11 +11,11 @@ using TrinityEditor.Controls.Feedback;
 using TrinityEditor.Controls.View;
 namespace TrinityEditor
 {
-    public partial class TrinityEditor : Form
+    public partial class TrinityEdit : Form
     {
         public static ConsoleOutput CConsole;
         public static GameView CGameView;
-        public TrinityEditor()
+        public TrinityEdit()
         {
             InitializeComponent();
 
