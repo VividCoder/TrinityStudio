@@ -12,6 +12,7 @@ namespace TrinityEditor.Controls.View
 {
     public partial class GameView : WeifenLuo.WinFormsUI.Docking.DockContent
     {
+        public TrinityEditor.Controls.Graphics.GLView View = null;
         public GameView()
         {
             InitializeComponent();
@@ -28,6 +29,7 @@ namespace TrinityEditor.Controls.View
 //                Environment.Exit(1);
 
             };
+            View = view;
         
         }
     }

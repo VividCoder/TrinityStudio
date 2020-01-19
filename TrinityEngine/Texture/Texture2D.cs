@@ -164,30 +164,35 @@ namespace TrinityEngine.Texture
 
                 if (tex.bigDone)
                 {
-                    GL.Enable(EnableCap.Texture2D);
-                    GL.BindTexture(TextureTarget.Texture2D, tex.ID);
-
-                    if (tex.Alpha)
-                    {
-                        GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, tex.bW, tex.bH, 0, PixelFormat.Rgba, PixelType.UnsignedByte, tex.RawData);
-                    }
-                    else
-                    {
-                        GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgb, tex.bW, tex.bH, 0, PixelFormat.Rgb, PixelType.UnsignedByte, tex.RawData);
-                    }
-
-                    GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, (int)TextureWrapMode.Repeat);
-                    GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, (int)TextureWrapMode.Repeat);
-
-                    GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.LinearMipmapLinear);
-                    GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Linear);
-                    GL.GenerateMipmap(GenerateMipmapTarget.Texture2D);
-                    tex.bigDone = true;
-                    GL.BindTexture(TextureTarget.Texture2D, 0);
+                    MakeTex(tex);
                     LoadingTexs.Remove(tex);
                     return;
                 }
             }
+        }
+
+        private static void MakeTex(Texture2D tex)
+        {
+            GL.Enable(EnableCap.Texture2D);
+            GL.BindTexture(TextureTarget.Texture2D, tex.ID);
+
+            if (tex.Alpha)
+            {
+                GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, tex.bW, tex.bH, 0, PixelFormat.Rgba, PixelType.UnsignedByte, tex.RawData);
+            }
+            else
+            {
+                GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgb, tex.bW, tex.bH, 0, PixelFormat.Rgb, PixelType.UnsignedByte, tex.RawData);
+            }
+
+            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, (int)TextureWrapMode.Repeat);
+            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, (int)TextureWrapMode.Repeat);
+
+            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.LinearMipmapLinear);
+            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Linear);
+            GL.GenerateMipmap(GenerateMipmapTarget.Texture2D);
+            tex.bigDone = true;
+            GL.BindTexture(TextureTarget.Texture2D, 0);
         }
 
         public byte[] SmallRawData;
@@ -229,23 +234,11 @@ namespace TrinityEngine.Texture
 
             if (new FileInfo(path + ".texDat").Exists)
             {
-                void Load_Tex()
-                {
-                    SmallRawData = LoadTexData(path + ".texDatSmall");
-                    sW = W;
-                    sH = H;
-                    smallDone = true;
+             
                     RawData = LoadTexData(path + ".texDat");
                     bW = W;
                     bH = H;
-                    bigDone = true;
-                }
-
-                LoadingTexs.Add(this);
-
-                LoadThread = new Thread(new ThreadStart(Load_Tex));
-
-                LoadThread.Start();
+                MakeTex(this);      
             }
             else
             {

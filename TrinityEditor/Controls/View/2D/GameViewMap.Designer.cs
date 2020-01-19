@@ -1,6 +1,6 @@
-﻿namespace TrinityEditor.Controls.Graphics
+﻿namespace TrinityEditor.Controls.View._2D
 {
-    partial class GLView
+    partial class GameViewMap
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,29 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.SuspendLayout();
-            // 
-            // timer1
-            // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 25;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // GLView
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Name = "GLView";
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.GLView_Paint);
-            this.Resize += new System.EventHandler(this.GLView_Resize);
-            this.ResumeLayout(false);
-
         }
 
         #endregion
-
-        public System.Windows.Forms.Timer timer1;
     }
 }

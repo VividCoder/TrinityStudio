@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{C9F88618-5A18-4C06-A64F-F59926010355}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>TrinityEditor</RootNamespace>
     <AssemblyName>TrinityEditor</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -54,6 +54,9 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="OpenTK, Version=3.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
       <HintPath>packages\OpenTK.3.1.0\lib\net20\OpenTK.dll</HintPath>
@@ -91,6 +94,12 @@
     </Compile>
     <Compile Include="Controls\GL\GLView.Designer.cs">
       <DependentUpon>GLView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\View\2D\GameViewMap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\View\2D\GameViewMap.Designer.cs">
+      <DependentUpon>GameViewMap.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\View\GameView.cs">
       <SubType>Form</SubType>
@@ -143,7 +152,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controls\View\2D\" />
+    <ProjectReference Include="..\TrinityEngine\TrinityEngine.csproj">
+      <Project>{f7436382-566d-456c-8213-1931e7318bc3}</Project>
+      <Name>TrinityEngine</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

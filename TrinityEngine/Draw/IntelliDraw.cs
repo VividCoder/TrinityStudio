@@ -158,7 +158,7 @@ namespace TrinityEngine.Draw
         }
 
         static bool begun = false;
-        /*
+        
         public static void EndDraw2D()
         {
             if (!begun) return;
@@ -167,9 +167,14 @@ namespace TrinityEngine.Draw
             //  GL.Enable(EnableCap.Blend);
             GL.Disable(EnableCap.CullFace);
 
-            GL.Viewport(0, 0, Vivid.App.AppInfo.W, Vivid.App.AppInfo.H);
+           // GL.Viewport(0, 0, Vivid.App.AppInfo.W, Vivid.App.AppInfo.H);
 
-            // DrawFX.Bind();
+            if(DrawFX == null)
+            {
+
+                DrawFX = new XQuad();
+            }
+             DrawFX.Bind();
            
 
             foreach (var draw_list in Draws)
@@ -188,14 +193,14 @@ namespace TrinityEngine.Draw
                 int vert_i = 0;
                 int int_i = 0;
 
-                draw_list.Data[0].Img2D.Bind(0);
-                if (draw_list.Data[0].Norm2D != null)
-                {
-                    draw_list.Data[0].Norm2D.Bind(2);
-                }
-                else{
+                draw_list.Data[0].Img.Bind(0);
+                //if (draw_list.Data[0].Norm2D != null)
+               // {
+                //    draw_list.Data[0].Norm.Bind(2);
+               // }
+                //else{
 
-                }
+                //}
 
                 foreach (var data in draw_list.Data)
                 {
@@ -205,8 +210,8 @@ namespace TrinityEngine.Draw
                         ind_data[int_i] = (uint)int_i++;
                     }
 
-                    vert_data[vert_i++] = data.xc[0];
-                    vert_data[vert_i++] = data.yc[0];
+                    vert_data[vert_i++] = data.X;
+                    vert_data[vert_i++] = data.Y;
                     vert_data[vert_i++] = data.Z;
 
                     vert_data[vert_i++] = 0;
@@ -217,8 +222,8 @@ namespace TrinityEngine.Draw
                     vert_data[vert_i++] = data.Col.Z;
                     vert_data[vert_i++] = data.Col.W;
 
-                    vert_data[vert_i++] = data.xc[1];
-                    vert_data[vert_i++] = data.yc[1];
+                    vert_data[vert_i++] = data.X + data.W;
+                    vert_data[vert_i++] = data.Y;
                     vert_data[vert_i++] = data.Z;
 
                     vert_data[vert_i++] = 1;
@@ -229,8 +234,8 @@ namespace TrinityEngine.Draw
                     vert_data[vert_i++] = data.Col.Z;
                     vert_data[vert_i++] = data.Col.W;
 
-                    vert_data[vert_i++] = data.xc[2];
-                    vert_data[vert_i++] = data.yc[2];
+                    vert_data[vert_i++] = data.X + data.W;
+                    vert_data[vert_i++] = data.Y + data.H;
                     vert_data[vert_i++] = data.Z;
 
                     vert_data[vert_i++] = 1;
@@ -241,8 +246,8 @@ namespace TrinityEngine.Draw
                     vert_data[vert_i++] = data.Col.Z;
                     vert_data[vert_i++] = data.Col.W;
 
-                    vert_data[vert_i++] = data.xc[3];
-                    vert_data[vert_i++] = data.yc[3];
+                    vert_data[vert_i++] = data.X;
+                    vert_data[vert_i++] = data.Y + data.H;
                     vert_data[vert_i++] = data.Z;
 
                     vert_data[vert_i++] = 0;
@@ -285,15 +290,15 @@ namespace TrinityEngine.Draw
                 GL.DeleteVertexArray(vert_arr);
                 // GL.DeleteBuffer(ind_buf);
 
-                draw_list.Data[0].Img2D.Unbind(0);
+                draw_list.Data[0].Img.Release(0);
             }
 
 
-            // DrawFX.Release();
+             DrawFX.Release();
         }
 
-        */
-        public static void EndDraw(Effect3D fx, Binder bind)
+        
+        public static void _EndDraw(Effect3D fx, Binder bind)
         {
 
             if (!begun) return;
@@ -759,7 +764,7 @@ namespace TrinityEngine.Draw
         {
             SetTex("tR", 0);
 
-           // SetMat("proj", Matrix4.CreateOrthographicOffCenter(0, Vivid.App.AppInfo.RW, Vivid.App.AppInfo.RH, 0, -1, 1000));
+            SetMat("proj", Matrix4.CreateOrthographicOffCenter(0, AppInfo.Info.CurWidth, AppInfo.Info.CurHeight, 0, -1, 1000));
             // Console.WriteLine("OW:" + AppInfo.RW + " OH:" + AppInfo.RH);
             // Console.WriteLine("W:" + AppInfo.RW + " H:" + AppInfo.RH);
         }
