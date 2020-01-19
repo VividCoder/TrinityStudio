@@ -16,6 +16,8 @@ namespace TrinityEditor.Controls.Graph
 
         public GameGraph GGraph;
 
+        public ContextMenuStrip MContextMenu;
+
         public GraphTree()
         {
             InitializeComponent();

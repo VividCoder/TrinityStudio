@@ -15,6 +15,35 @@ namespace TrinityEditor.Controls.Graph._2D
         public Graph2D()
         {
             InitializeComponent();
+            CreateContextMenu();
+        }
+
+        public void CreateContextMenu()
+        {
+
+            MContextMenu = new ContextMenuStrip();
+
+            var m_new = MContextMenu.Items.Add("New") as ToolStripMenuItem;
+
+            var new_map = m_new.DropDownItems.Add("2D Map") as ToolStripMenuItem;
+
+            new_map.Click += New_map_Click;
+
+          
+
+            //var new_map = m_new.
+
+
+            ContextMenuStrip = MContextMenu;
+
+
+        }
+
+        private void New_map_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(1);
+            return;
+            throw new NotImplementedException();
         }
     }
 }
