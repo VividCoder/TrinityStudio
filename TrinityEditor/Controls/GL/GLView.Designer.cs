@@ -36,6 +36,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Name = "GLView";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.GLView_Paint);
+            this.Resize += new System.EventHandler(this.GLView_Resize);
             this.ResumeLayout(false);
 
         }

@@ -22,7 +22,7 @@ namespace TrinityEditor
             CConsole = new ConsoleOutput();
             CConsole.Show(this.dockPanel1, WeifenLuo.WinFormsUI.Docking.DockState.DockBottom);
 
-            CGameView = new Controls.View._2D.MapView();
+            CGameView = new Controls.View.GameView();
             CGameView.Show(this.dockPanel1, WeifenLuo.WinFormsUI.Docking.DockState.Document);
         
         }

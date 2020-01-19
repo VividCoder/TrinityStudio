@@ -16,6 +16,19 @@ namespace TrinityEditor.Controls.View
         {
             InitializeComponent();
             Text = "Game View";
+
+            var view = new TrinityEditor.Controls.Graphics.GLView();
+            Controls.Add(view);
+            view.Dock = DockStyle.Fill;
+
+            view.RenderCall = () =>
+            {
+
+                TrinityEdit.CConsole.DebugMsg("Rendering...");
+//                Environment.Exit(1);
+
+            };
+        
         }
     }
 }

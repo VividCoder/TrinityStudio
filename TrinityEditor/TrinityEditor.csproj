@@ -32,6 +32,28 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="OpenTK, Version=3.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
       <HintPath>packages\OpenTK.3.1.0\lib\net20\OpenTK.dll</HintPath>
@@ -70,12 +92,6 @@
     <Compile Include="Controls\GL\GLView.Designer.cs">
       <DependentUpon>GLView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\View\2D\MapView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Controls\View\2D\MapView.Designer.cs">
-      <DependentUpon>MapView.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controls\View\GameView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,8 +112,8 @@
     <EmbeddedResource Include="Controls\GL\GLView.resx">
       <DependentUpon>GLView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\View\2D\MapView.resx">
-      <DependentUpon>MapView.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\View\GameView.resx">
+      <DependentUpon>GameView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TrinityEditor.resx">
       <DependentUpon>TrinityEditor.cs</DependentUpon>
@@ -126,6 +142,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Controls\View\2D\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

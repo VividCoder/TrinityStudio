@@ -12,8 +12,14 @@ using OpenTK.Graphics.OpenGL4;
 
 namespace TrinityEditor.Controls.Graphics
 {
+    public delegate void RenderEvent();
+    public delegate void UpdateEvent();
     public partial class GLView : OpenTK.GLControl
     {
+
+        public RenderEvent RenderCall;
+        public UpdateEvent UpdateCall;
+
         public GLView()
         {
             InitializeComponent();
@@ -22,9 +28,12 @@ namespace TrinityEditor.Controls.Graphics
         protected override void OnLoad(EventArgs e)
         {
             //base.OnLoad(e);
-            GL.ClearColor(Color.Pink);
+            GL.ClearColor(Color.LightBlue);
            
         }
+
+       
+        
 
         private void GLView_Paint(object sender, PaintEventArgs e)
         {
@@ -32,7 +41,15 @@ namespace TrinityEditor.Controls.Graphics
 
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 
+            RenderCall?.Invoke();
+
             SwapBuffers();
+        }
+
+        private void GLView_Resize(object sender, EventArgs e)
+        {
+            GL.Viewport(0, 0, ClientSize.Width, ClientSize.Height);
+
         }
     }
 }

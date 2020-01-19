@@ -1,0 +1,4 @@
+﻿namespace TrinityEngine.Data
+{
+
+}

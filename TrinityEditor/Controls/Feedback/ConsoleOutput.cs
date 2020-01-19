@@ -17,5 +17,11 @@ namespace TrinityEditor.Controls.Feedback
             InitializeComponent();
             Text = "Console";
         }
+        public void DebugMsg(string msg)
+        {
+
+            richTextBox1.Text = richTextBox1.Text + msg + "\n";
+;
+        }
     }
 }
