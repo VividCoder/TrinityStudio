@@ -9,14 +9,31 @@ namespace TrinityEngine.Graph
     public class GraphNode2DMap : GraphNode2D
     {
 
+        public TrinityEngine.Map.Map NodeMap
+        {
+            get;
+            set;
+        }
+
+        public GraphNode2DMap(int mapWidth,int mapHeight,int tileWidth,int tileHeight,int layers=1,string name="")
+        {
+
+            Name = name;
+
+        }
+
         public override void Update()
         {
-            Environment.Exit(1);
+
+            UpdateNodes();
         }
 
         public override void Render()
         {
             
+            
+
+            RenderNodes();
 
         }
 

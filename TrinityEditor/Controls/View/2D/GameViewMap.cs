@@ -12,6 +12,14 @@ namespace TrinityEditor.Controls.View._2D
 {
     public partial class GameViewMap : GameView
     {
+        public TrinityEngine.Graph.GameGraph2D GGraph2D = null;
+
+        public override void SetGameGraph(TrinityEngine.Graph.GameGraph graph)
+        {
+            GGraph = graph;
+            GGraph2D = (TrinityEngine.Graph.GameGraph2D)graph;
+        }
+
         private TrinityEngine.Texture.Texture2D tex1;
         int x = 20;
         public GameViewMap()
@@ -20,7 +28,7 @@ namespace TrinityEditor.Controls.View._2D
 
             View.UpdateCall = () =>
             {
-                x = x + 5;
+                GGraph.Update();
                 View.Invalidate();
                 //TrinityEdit.CConsole.DebugMsg("update");
                 //TrinityEngine.Texture.Texture2D.UpdateLoading();
@@ -28,18 +36,8 @@ namespace TrinityEditor.Controls.View._2D
             View.RenderCall = () =>
             {
 
-                if (tex1 == null)
-                {
-                    tex1 = new TrinityEngine.Texture.Texture2D("Corona/Img/Icon/BigShotIcon.png", TrinityEngine.Texture.LoadMethod.Single, true);
-               //     TrinityEngine.Texture.Texture2D.UpdateLoading();
-
-                }
-
-                //View.UpdateCall?.Invoke();
-                IntelliDraw.BeginDraw();
-                IntelliDraw.DrawImg(x, 20, 200, 200, tex1, new OpenTK.Vector4(1, 1, 1, 1));
-                IntelliDraw.DrawImg(180, 80, 150, 150, tex1, new OpenTK.Vector4(1, 1, 1, 1)); 
-                IntelliDraw.EndDraw2D();
+                GGraph.PreRender();
+                GGraph.Render();
                 //TrinityEdit.CConsole.DebugMsg("Rendered.");
                 //IntelliDraw.
                 View.AutoValidate = AutoValidate.Disable;

@@ -49,7 +49,8 @@ namespace TrinityEditor
             GGraph = new GameGraph2D();
 
             CGraphTree.SetGameGraph(GGraph);
-
+            CGameView.SetGameGraph(GGraph);
+            
 
         }
 

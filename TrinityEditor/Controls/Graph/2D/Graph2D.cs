@@ -43,18 +43,29 @@ namespace TrinityEditor.Controls.Graph._2D
         {
 
 
+            Info.GetNewMapMetrics newMapWin = new Info.GetNewMapMetrics();
 
-            TrinityEngine.Graph.GraphNode2DMap new_node = new TrinityEngine.Graph.GraphNode2DMap();
+            newMapWin.Show();
+
+            newMapWin.CreateMap = (mw, mh, tw, th, lc, name) =>
+            {
+
+                TrinityEngine.Graph.GraphNode2DMap new_node = new TrinityEngine.Graph.GraphNode2DMap(mw, mh, tw, th, lc, name);
 
 
-            new_node.Name = "Map001";
-            var curNode = View.SelectedNode;
-            if (curNode == null) return;
-            var p_node = curNode.Tag as TrinityEngine.Graph.GraphNode2D;
+                var curNode = View.SelectedNode;
+                if (curNode == null) return;
+                var p_node = curNode.Tag as TrinityEngine.Graph.GraphNode2D;
 
-            p_node.AddNode(new_node);
+                p_node.AddNode(new_node);
 
-            Rebuild();
+                Rebuild();
+
+                
+
+            };
+
+
 
             
             /*

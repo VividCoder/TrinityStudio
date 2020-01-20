@@ -25,10 +25,22 @@ namespace TrinityEngine.Graph
         public GameGraph()
         {
 
-            Name = "Game Graph"; 
+            Name = "Game Graph";
             RootNode = new GraphNode();
 
         }
 
+        public virtual void Update()
+        {
+            RootNode.Update();
+        }
+        public virtual void PreRender()
+        {
+            RootNode.PreRender();
+        }
+        public virtual void Render()
+        {
+            RootNode.Render();
+        }
     }
 }

@@ -109,6 +109,12 @@
     <Compile Include="Controls\Graph\GraphTree.Designer.cs">
       <DependentUpon>GraphTree.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Info\GetNewMapMetrics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Info\GetNewMapMetrics.Designer.cs">
+      <DependentUpon>GetNewMapMetrics.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\View\2D\GameViewMap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,6 +143,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Graph\GraphTree.resx">
       <DependentUpon>GraphTree.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Info\GetNewMapMetrics.resx">
+      <DependentUpon>GetNewMapMetrics.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\View\GameView.resx">
       <DependentUpon>GameView.cs</DependentUpon>

@@ -13,6 +13,14 @@ namespace TrinityEditor.Controls.View
     public partial class GameView : WeifenLuo.WinFormsUI.Docking.DockContent
     {
         public TrinityEditor.Controls.Graphics.GLView View = null;
+
+        public TrinityEngine.Graph.GameGraph GGraph = null;
+
+        public virtual void SetGameGraph(TrinityEngine.Graph.GameGraph graph)
+        {
+            throw new NotImplementedException();
+        }
+
         public GameView()
         {
             InitializeComponent();

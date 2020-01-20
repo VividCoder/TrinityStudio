@@ -46,12 +46,41 @@ namespace TrinityEngine.Graph
 
         }
 
-        public virtual void Update() { }
-        
-        public virtual void PoreRender() { }
-        public virtual void Render() { }
-      
+        public virtual void Update() {
 
+            UpdateNodes();
+        }
+        
+        public virtual void PreRender() {
+            PreRenderNodes();
+        }
+        public virtual void Render() {
+
+            RenderNodes();
+        }
+      
+        public void UpdateNodes()
+        {
+            foreach(var node in Nodes)
+            {
+                node.Update();
+            }
+        }
+        public void RenderNodes()
+        {
+            foreach(var node in Nodes)
+            {
+                node.Render();
+            }
+        }
+
+        public void PreRenderNodes()
+        {
+            foreach(var node in Nodes)
+            {
+                node.PreRender();
+            }
+        }
 
     }
 }
