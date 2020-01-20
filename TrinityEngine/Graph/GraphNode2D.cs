@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TrinityEngine.Graph
 {
-    class GraphNode2D : GraphNode
+    public class GraphNode2D : GraphNode
     {
 
         public float X
@@ -41,6 +41,8 @@ namespace TrinityEngine.Graph
             Rotation = 0;
 
         }
+
+        
 
     }
 }

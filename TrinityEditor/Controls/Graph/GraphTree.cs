@@ -18,9 +18,12 @@ namespace TrinityEditor.Controls.Graph
 
         public ContextMenuStrip MContextMenu;
 
+        public TreeView View;
+
         public GraphTree()
         {
             InitializeComponent();
+            View = projectTree;
         }
 
         private void mapToolStripMenuItem_Click(object sender, EventArgs e)
@@ -48,7 +51,9 @@ namespace TrinityEditor.Controls.Graph
         {
 
             var new_node = new TreeNode(node.Name);
+            new_node.Tag = node;
             tnode.Nodes.Add(new_node);
+
             foreach(var sub in node.Nodes)
             {
                 AddNode(sub, new_node);

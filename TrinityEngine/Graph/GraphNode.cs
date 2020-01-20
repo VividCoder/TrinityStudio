@@ -6,16 +6,15 @@ using System.Threading.Tasks;
 
 namespace TrinityEngine.Graph
 {
-    public class GraphNode
+    public class GraphNode 
     {
-
         public string Name
         {
             get;
             set;
         }
 
-     
+
 
         public GraphNode Root
         {
@@ -29,6 +28,14 @@ namespace TrinityEngine.Graph
             set;
         }
 
+        public GraphNode AddNode(GraphNode node)
+        {
+            Nodes.Add(node);
+            node.Root = this;
+            return node;
+        }
+
+
         public GraphNode()
         {
 
@@ -38,6 +45,13 @@ namespace TrinityEngine.Graph
        
 
         }
+
+        public virtual void Update() { }
+        
+        public virtual void PoreRender() { }
+        public virtual void Render() { }
+      
+
 
     }
 }

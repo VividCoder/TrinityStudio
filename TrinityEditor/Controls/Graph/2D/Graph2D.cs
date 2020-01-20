@@ -41,7 +41,26 @@ namespace TrinityEditor.Controls.Graph._2D
 
         private void New_map_Click(object sender, EventArgs e)
         {
-            Environment.Exit(1);
+
+
+
+            TrinityEngine.Graph.GraphNode2DMap new_node = new TrinityEngine.Graph.GraphNode2DMap();
+
+
+            new_node.Name = "Map001";
+            var curNode = View.SelectedNode;
+            if (curNode == null) return;
+            var p_node = curNode.Tag as TrinityEngine.Graph.GraphNode2D;
+
+            p_node.AddNode(new_node);
+
+            Rebuild();
+
+            
+            /*
+            //var new_node = new Graph2DTreeNode("New Map001");
+            //curNode.Nodes.Add(new_node);
+            */
             return;
             throw new NotImplementedException();
         }

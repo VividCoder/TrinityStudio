@@ -7,7 +7,7 @@ using TrinityEngine.Map.Layer;
 using TrinityEngine.Map;
 namespace TrinityEngine.Map
 {
-    public class Map
+    public class Map : Graph.GraphNode2D
     {
         public class HighLightTile
         {
