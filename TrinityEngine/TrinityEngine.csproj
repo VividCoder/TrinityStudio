@@ -96,6 +96,7 @@
     <Compile Include="Graph\GameGraph2D.cs" />
     <Compile Include="Graph\GraphNode.cs" />
     <Compile Include="Graph\GraphNode2D.cs" />
+    <Compile Include="Graph\GraphNode2DMap.cs" />
     <Compile Include="Graph\IGraphRenderable.cs" />
     <Compile Include="Graph\IGraphUpdatable.cs" />
     <Compile Include="Help\IOHelp.cs" />

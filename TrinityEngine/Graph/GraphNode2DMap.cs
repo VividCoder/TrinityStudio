@@ -19,6 +19,13 @@ namespace TrinityEngine.Graph
         {
 
             Name = name;
+            NodeMap = new Map.Map(layers);
+            for(int i = 0; i < layers; i++)
+            {
+                NodeMap.Layers.Add(new Map.Layer.MapLayer(mapWidth, mapHeight, NodeMap));
+            }
+            NodeMap.TileWidth = tileWidth;
+            NodeMap.TileHeight = tileHeight;
 
         }
 
@@ -30,11 +37,17 @@ namespace TrinityEngine.Graph
 
         public override void Render()
         {
-            
-            
+
+            NodeMap.Render();
 
             RenderNodes();
 
+        }
+
+        public override void CreateResources()
+        {
+            NodeMap.CreateResources();
+            CreateResourcesNodes();
         }
 
     }

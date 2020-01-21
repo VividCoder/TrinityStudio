@@ -22,6 +22,7 @@ namespace TrinityEditor.Controls.View._2D
 
         private TrinityEngine.Texture.Texture2D tex1;
         int x = 20;
+        bool resources = false;
         public GameViewMap()
         {
             InitializeComponent();
@@ -35,7 +36,11 @@ namespace TrinityEditor.Controls.View._2D
             };
             View.RenderCall = () =>
             {
-
+                if(!resources)
+                {
+                    resources = true;
+                    GGraph.CreateResources();
+                }
                 GGraph.PreRender();
                 GGraph.Render();
                 //TrinityEdit.CConsole.DebugMsg("Rendered.");

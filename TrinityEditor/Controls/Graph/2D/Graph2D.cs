@@ -59,6 +59,8 @@ namespace TrinityEditor.Controls.Graph._2D
 
                 p_node.AddNode(new_node);
 
+                new_node.CreateResources();
+
                 Rebuild();
 
                 

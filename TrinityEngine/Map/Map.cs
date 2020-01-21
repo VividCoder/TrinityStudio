@@ -7,8 +7,9 @@ using TrinityEngine.Map.Layer;
 using TrinityEngine.Map;
 namespace TrinityEngine.Map
 {
-    public class Map : Graph.GraphNode2D
+    public class Map 
     {
+        
         public class HighLightTile
         {
 
@@ -144,9 +145,44 @@ namespace TrinityEngine.Map
 
             for (int i = 0; i < numLayers; i++)
             {
-               // Layers.Add(new MapLayer());
+            //    Layers.Add(new MapLayer());
             }
 
+
+        }
+
+        public Texture.Texture2D NoTileTex = null;
+
+        public void Render()
+        {
+            if (NoTileTex == null)
+            {
+            }
+            Draw.IntelliDraw.BeginDraw();
+
+            int ln = 0;
+
+            foreach(var lay in Layers)
+            {
+
+                for(int y = 0; y < lay.Height; y++)
+                {
+                    for(int x = 0; x < lay.Width; x++)
+                    {
+
+                        int renX = x * TileWidth;
+                        int renY = y * TileHeight;
+
+                        if (ln == Layers.Count - 1)
+                        {
+                            Draw.IntelliDraw.DrawImg(renX, renY, TileWidth, TileHeight, NoTileTex, new OpenTK.Vector4(1, 1, 1, 1));
+                        }
+                    }
+                }
+                ln++;
+            }
+
+            Draw.IntelliDraw.EndDraw2D();
         }
 
         MapLayer GetLayer(int index)
@@ -171,6 +207,12 @@ namespace TrinityEngine.Map
 
             HL.Add(new HighLightTile() { X = x, Y = y });
             sceneChanged = true;
+
+        }
+
+        public void CreateResources()
+        {
+            NoTileTex = new Texture.Texture2D("Content/Edit/highlight1.png", Texture.LoadMethod.Single, true);
 
         }
 

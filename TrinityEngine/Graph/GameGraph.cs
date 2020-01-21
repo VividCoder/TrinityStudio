@@ -42,5 +42,10 @@ namespace TrinityEngine.Graph
         {
             RootNode.Render();
         }
+    
+        public void CreateResources()
+        {
+            RootNode.CreateResources();
+        }
     }
 }

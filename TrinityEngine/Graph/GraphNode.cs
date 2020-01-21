@@ -59,6 +59,7 @@ namespace TrinityEngine.Graph
             RenderNodes();
         }
       
+
         public void UpdateNodes()
         {
             foreach(var node in Nodes)
@@ -79,6 +80,20 @@ namespace TrinityEngine.Graph
             foreach(var node in Nodes)
             {
                 node.PreRender();
+            }
+        }
+
+        public virtual void CreateResources()
+        {
+
+            CreateResourcesNodes();
+        }
+
+        public void CreateResourcesNodes()
+        {
+            foreach(var node in Nodes)
+            {
+                node.CreateResources();
             }
         }
 
