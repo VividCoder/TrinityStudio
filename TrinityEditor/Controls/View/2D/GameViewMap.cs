@@ -46,7 +46,7 @@ namespace TrinityEditor.Controls.View._2D
             ViewMat = OpenTK.Matrix4.Identity;
 
         }
-
+        TrinityEngine.Texture.Texture2D testc = null;
         public GameViewMap()
         {
             InitializeComponent();
@@ -70,7 +70,26 @@ namespace TrinityEditor.Controls.View._2D
                 GGraph.CenterY = View.ClientSize.Height / 2;
                 GGraph.ViewMatrix = ViewMat;
                 GGraph.PreRender();
-                GGraph.Render();
+               GGraph.Render();
+
+                if (testc == null)
+                {
+                    testc = new TrinityEngine.Texture.Texture2D("Content/edit/marker.png", TrinityEngine.Texture.LoadMethod.Single, true);
+                }
+
+                if (TrinityEngine.Graph.GraphNode2DMap.NM != null)
+                {
+
+
+                    OpenTK.Vector2[] rpos = TrinityEngine.Graph.GraphNode2DMap.NM.GetRenderPos(1, 1);
+
+                    IntelliDraw.BeginDraw();
+                    IntelliDraw.ViewMatrix = OpenTK.Matrix4.Identity;
+
+                    IntelliDraw.DrawImg((int)rpos[3].X,(int)rpos[3].Y, 20, 20, testc, new OpenTK.Vector4(1, 1, 1, 1));
+
+                    IntelliDraw.EndDraw2D();
+                }
                 //TrinityEdit.CConsole.DebugMsg("Rendered.");
                 //IntelliDraw.
                 View.AutoValidate = AutoValidate.Disable;

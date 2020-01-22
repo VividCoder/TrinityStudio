@@ -145,11 +145,17 @@ namespace TrinityEngine.Draw
 
         }
         */
+        public static Texture2D ProxyTex2 = null;
         public static void DrawImg(int x, int y, int w, int h)
         {
 
+            if (ProxyTex2 == null)
+            {
+                ProxyTex2 = new Texture2D("Content/Edit/marker.png", LoadMethod.Single, true);
+            }
             if (!begun) return;
             var draw_list = GetDrawList(ProxyTex);
+
 
             draw_list.AddDraw(x, y, w, h, ProxyTex, new Vector4(1, 1, 1, 1), Draw_Z);
 

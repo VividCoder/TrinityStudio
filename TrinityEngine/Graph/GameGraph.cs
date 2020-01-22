@@ -22,6 +22,24 @@ namespace TrinityEngine.Graph
             set;
         }
 
+        public float CamX
+        {
+            get;
+            set;
+        }
+
+        public float CamY
+        {
+            get;
+            set;
+        }
+
+        public float CamZ
+        {
+            get;
+            set;
+        }
+
         public string Name
         {
             get;

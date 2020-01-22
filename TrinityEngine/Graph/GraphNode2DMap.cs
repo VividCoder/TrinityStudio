@@ -37,16 +37,28 @@ namespace TrinityEngine.Graph
 
         float RotV = 0;
         
-      
+        public OpenTK.Vector2[] GetRenderPos(int mx,int my)
+        {
 
+            OpenTK.Vector2[] pos = new OpenTK.Vector2[4];
+
+            pos = NodeMap.GetRenderPos(mx,my);
+
+            return pos;
+
+        }
+        public static GraphNode2DMap NM = null;
         public override void Render()
         {
+            NM = this;
             RotV = RotV + 0.2f;
             
             OpenTK.Matrix4 vm = OpenTK.Matrix4.CreateRotationZ(OpenTK.MathHelper.DegreesToRadians(RotV));
             OpenTK.Matrix4 tm = OpenTK.Matrix4.CreateTranslation(new OpenTK.Vector3(CenterX,CenterY,0));
 
             vm = vm * tm;
+
+       //     vm = vm * OpenTK.Matrix4.CreateTranslation(new OpenTK.Vector3(CamX, CamY, 0));
 
 
             NodeMap.ViewMatrix = vm;

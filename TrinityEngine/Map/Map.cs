@@ -172,6 +172,39 @@ namespace TrinityEngine.Map
 
         public Texture.Texture2D NoTileTex = null;
 
+        public OpenTK.Vector2[] GetRenderPos(int x,int y)
+        {
+
+            OpenTK.Vector2[] pos = new OpenTK.Vector2[4];
+
+            int renX = x * TileWidth - (int)CamX;
+            int renY = y * TileHeight - (int)CamY;
+
+            var r = OpenTK.Vector3.TransformPosition(new OpenTK.Vector3(renX, renY, 0), ViewMatrix);
+
+            pos[0].X = r.X;
+            pos[0].Y = r.Y;
+
+            r = OpenTK.Vector3.TransformPosition(new OpenTK.Vector3(renX + TileWidth, renY, 0), ViewMatrix);
+
+            pos[1].X = r.X;
+            pos[1].Y = r.Y;
+
+            r = OpenTK.Vector3.TransformPosition(new OpenTK.Vector3(renX + TileWidth, renY + TileHeight, 0), ViewMatrix);
+
+            pos[2].X = r.X;
+            pos[2].Y = r.Y;
+
+            r = OpenTK.Vector3.TransformPosition(new OpenTK.Vector3(renX, renY + TileHeight, 0), ViewMatrix);
+
+            pos[3].X = r.X;
+            pos[3].Y = r.Y;
+
+            return pos;
+
+
+        }
+
         public void Render()
         {
             if (NoTileTex == null)

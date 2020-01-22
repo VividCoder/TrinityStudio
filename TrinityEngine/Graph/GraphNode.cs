@@ -8,6 +8,10 @@ namespace TrinityEngine.Graph
 {
     public class GraphNode 
     {
+
+        public List<Symbiosis.ObjectConnector> Connectors
+        { get; set; }
+
         public float CenterX
         {
             get;
@@ -59,6 +63,7 @@ namespace TrinityEngine.Graph
             Root = null;
             Nodes = new List<GraphNode>();
             Name = "Node001";
+            Connectors = new List<Symbiosis.ObjectConnector>();
        
 
         }
