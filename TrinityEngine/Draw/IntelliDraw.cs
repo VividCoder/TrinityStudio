@@ -67,6 +67,7 @@ namespace TrinityEngine.Draw
         public static XQuad DrawFX = null;
         public static Texture2D EmptyTex;
         public static Texture2D ProxyTex = new Texture2D(32, 32, true);
+        public static Matrix4 ViewMatrix = Matrix4.Identity;
         public static void BeginDraw(bool leavez = false)
         {
             if (begun)
@@ -297,7 +298,144 @@ namespace TrinityEngine.Draw
              DrawFX.Release();
         }
 
-        
+        public static void EndDraw2DViewMatrix()
+        {
+            if (!begun) return;
+            begun = false;
+            GL.Disable(EnableCap.DepthTest);
+            //  GL.Enable(EnableCap.Blend);
+            GL.Disable(EnableCap.CullFace);
+
+            // GL.Viewport(0, 0, Vivid.App.AppInfo.W, Vivid.App.AppInfo.H);
+
+            if (DrawFX == null)
+            {
+
+                DrawFX = new XQuad();
+            }
+            DrawFX.Bind();
+
+
+            foreach (var draw_list in Draws)
+            {
+                var vert_arr = GL.GenVertexArray();
+                var vert_buf = GL.GenBuffer();
+                // var ind_buf = GL.GenBuffer();
+
+                int draw_c = draw_list.Data.Count * 4;
+
+                int draw_i = 0;
+
+                float[] vert_data = new float[draw_c * 9];
+                uint[] ind_data = new uint[draw_c];
+
+                int vert_i = 0;
+                int int_i = 0;
+
+                draw_list.Data[0].Img.Bind(0);
+                //if (draw_list.Data[0].Norm2D != null)
+                // {
+                //    draw_list.Data[0].Norm.Bind(2);
+                // }
+                //else{
+
+                //}
+
+                foreach (var data in draw_list.Data)
+                {
+
+                    for (int i = 0; i < 4; i++)
+                    {
+                        ind_data[int_i] = (uint)int_i++;
+                    }
+
+                    vert_data[vert_i++] = data.X;
+                    vert_data[vert_i++] = data.Y;
+                    vert_data[vert_i++] = data.Z;
+
+                    vert_data[vert_i++] = 0;
+                    vert_data[vert_i++] = 0;
+
+                    vert_data[vert_i++] = data.Col.X;
+                    vert_data[vert_i++] = data.Col.Y;
+                    vert_data[vert_i++] = data.Col.Z;
+                    vert_data[vert_i++] = data.Col.W;
+
+                    vert_data[vert_i++] = data.X + data.W;
+                    vert_data[vert_i++] = data.Y;
+                    vert_data[vert_i++] = data.Z;
+
+                    vert_data[vert_i++] = 1;
+                    vert_data[vert_i++] = 0;
+
+                    vert_data[vert_i++] = data.Col.X;
+                    vert_data[vert_i++] = data.Col.Y;
+                    vert_data[vert_i++] = data.Col.Z;
+                    vert_data[vert_i++] = data.Col.W;
+
+                    vert_data[vert_i++] = data.X + data.W;
+                    vert_data[vert_i++] = data.Y + data.H;
+                    vert_data[vert_i++] = data.Z;
+
+                    vert_data[vert_i++] = 1;
+                    vert_data[vert_i++] = 1;
+
+                    vert_data[vert_i++] = data.Col.X;
+                    vert_data[vert_i++] = data.Col.Y;
+                    vert_data[vert_i++] = data.Col.Z;
+                    vert_data[vert_i++] = data.Col.W;
+
+                    vert_data[vert_i++] = data.X;
+                    vert_data[vert_i++] = data.Y + data.H;
+                    vert_data[vert_i++] = data.Z;
+
+                    vert_data[vert_i++] = 0;
+                    vert_data[vert_i++] = 1;
+
+                    vert_data[vert_i++] = data.Col.X;
+                    vert_data[vert_i++] = data.Col.Y;
+                    vert_data[vert_i++] = data.Col.Z;
+                    vert_data[vert_i++] = data.Col.W;
+                }
+
+                //   GL.BindBuffer(BufferTarget.ElementArrayBuffer, ind_buf);
+                //  GL.BufferData(BufferTarget.ElementArrayBuffer, 4 * 4, ind_data, BufferUsageHint.StaticDraw);
+
+                GL.BindVertexArray(vert_arr);
+
+                GL.BindBuffer(BufferTarget.ArrayBuffer, vert_buf);
+
+                GL.BufferData(BufferTarget.ArrayBuffer, vert_data.Length * 4, vert_data, BufferUsageHint.StaticDraw);
+
+                GL.EnableVertexAttribArray(0);
+                GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 9 * 4, 0);
+
+                GL.EnableVertexAttribArray(1);
+                GL.VertexAttribPointer(1, 2, VertexAttribPointerType.Float, false, 9 * 4, 3 * 4);
+
+                GL.EnableVertexAttribArray(2);
+                GL.VertexAttribPointer(2, 4, VertexAttribPointerType.Float, false, 9 * 4, 5 * 4);
+
+                GL.DrawElements<uint>(PrimitiveType.Quads, draw_c, DrawElementsType.UnsignedInt, ind_data);
+
+                GL.DisableVertexAttribArray(0);
+                GL.DisableVertexAttribArray(1);
+                GL.DisableVertexAttribArray(2);
+
+                GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
+                //  GL.BindBuffer(BufferTarget.ElementArrayBuffer, 0);
+
+                GL.DeleteBuffer(vert_buf);
+                GL.DeleteVertexArray(vert_arr);
+                // GL.DeleteBuffer(ind_buf);
+
+                draw_list.Data[0].Img.Release(0);
+            }
+
+
+            DrawFX.Release();
+        }
+
         public static void _EndDraw(Effect3D fx, Binder bind)
         {
 
@@ -764,7 +902,7 @@ namespace TrinityEngine.Draw
         {
             SetTex("tR", 0);
 
-            SetMat("proj", Matrix4.CreateOrthographicOffCenter(0, AppInfo.Info.CurWidth, AppInfo.Info.CurHeight, 0, -1, 1000));
+            SetMat("proj", IntelliDraw.ViewMatrix * Matrix4.CreateOrthographicOffCenter(0, AppInfo.Info.CurWidth, AppInfo.Info.CurHeight, 0, -1, 1000));
             // Console.WriteLine("OW:" + AppInfo.RW + " OH:" + AppInfo.RH);
             // Console.WriteLine("W:" + AppInfo.RW + " H:" + AppInfo.RH);
         }

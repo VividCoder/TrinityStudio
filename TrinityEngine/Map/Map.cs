@@ -33,6 +33,25 @@ namespace TrinityEngine.Map
             get;
             set;
         }
+
+        public OpenTK.Matrix4 ViewMatrix
+        {
+            get;
+            set;
+        }
+
+        public float CamX
+        {
+            get;
+            set;
+        }
+
+        public float CamY
+        {
+            get;
+            set;
+        }
+
         /*
         public List<GraphLight> Lights
         {
@@ -159,6 +178,7 @@ namespace TrinityEngine.Map
             {
             }
             Draw.IntelliDraw.BeginDraw();
+            Draw.IntelliDraw.ViewMatrix = ViewMatrix;
 
             int ln = 0;
 
@@ -170,8 +190,8 @@ namespace TrinityEngine.Map
                     for(int x = 0; x < lay.Width; x++)
                     {
 
-                        int renX = x * TileWidth;
-                        int renY = y * TileHeight;
+                        int renX = x * TileWidth - (int)CamX;
+                        int renY = y * TileHeight - (int)CamY;
 
                         if (ln == Layers.Count - 1)
                         {
@@ -182,7 +202,7 @@ namespace TrinityEngine.Map
                 ln++;
             }
 
-            Draw.IntelliDraw.EndDraw2D();
+            Draw.IntelliDraw.EndDraw2DViewMatrix();
         }
 
         MapLayer GetLayer(int index)

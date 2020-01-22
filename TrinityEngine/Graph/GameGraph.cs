@@ -9,6 +9,18 @@ namespace TrinityEngine.Graph
     public class GameGraph
     {
 
+        public OpenTK.Matrix4 ViewMatrix = OpenTK.Matrix4.Identity;
+        public float CenterX
+        {
+            get;
+            set;
+        }
+
+        public float CenterY
+        {
+            get;
+            set;
+        }
 
         public string Name
         {
@@ -40,6 +52,8 @@ namespace TrinityEngine.Graph
         }
         public virtual void Render()
         {
+            RootNode.CenterX = CenterX;
+            RootNode.CenterY = CenterY;
             RootNode.Render();
         }
     

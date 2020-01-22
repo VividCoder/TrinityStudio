@@ -29,6 +29,7 @@ namespace TrinityEditor.Controls.View
             var view = new TrinityEditor.Controls.Graphics.GLView();
             Controls.Add(view);
             view.Dock = DockStyle.Fill;
+            view.MouseMove += View_MouseMove;
 
             view.RenderCall = () =>
             {
@@ -39,6 +40,28 @@ namespace TrinityEditor.Controls.View
             };
             View = view;
         
+        }
+        public virtual void MouseMove(int mx,int my,int dx,int dy)
+        {
+
+        }
+        bool firstM = true;
+        private int lastMx, lastMy;
+        private void View_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (firstM)
+            {
+                lastMx = e.X;
+                lastMy = e.Y;
+                firstM = false;
+            }
+            
+            MouseMove(e.X, e.Y, e.X - lastMx, e.Y - lastMy);
+            
+            lastMx = e.X;
+            lastMy = e.Y;
+
+            //throw new NotImplementedException();
         }
     }
 }

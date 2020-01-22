@@ -35,8 +35,25 @@ namespace TrinityEngine.Graph
             UpdateNodes();
         }
 
+        float RotV = 0;
+        
+      
+
         public override void Render()
         {
+            RotV = RotV + 0.2f;
+            
+            OpenTK.Matrix4 vm = OpenTK.Matrix4.CreateRotationZ(OpenTK.MathHelper.DegreesToRadians(RotV));
+            OpenTK.Matrix4 tm = OpenTK.Matrix4.CreateTranslation(new OpenTK.Vector3(CenterX,CenterY,0));
+
+            vm = vm * tm;
+
+
+            NodeMap.ViewMatrix = vm;
+
+
+            //NodeMap.CamX = CenterX;
+            //NodeMap.CamY = CenterY;
 
             NodeMap.Render();
 

@@ -14,6 +14,11 @@ namespace TrinityEditor.Controls.View._2D
     {
         public TrinityEngine.Graph.GameGraph2D GGraph2D = null;
 
+        public OpenTK.Matrix4 ViewMat;
+
+        public float CamX, CamY, CamZ;
+        public float CamRotation;
+
         public override void SetGameGraph(TrinityEngine.Graph.GameGraph graph)
         {
             GGraph = graph;
@@ -23,6 +28,25 @@ namespace TrinityEditor.Controls.View._2D
         private TrinityEngine.Texture.Texture2D tex1;
         int x = 20;
         bool resources = false;
+
+        public override void MouseMove(int mx, int my, int dx, int dy)
+        {
+
+            Console.WriteLine("MX:" + mx + " MY:" + my + " DX:" + dx + " DY:" + dy);
+            //ase.MouseMove(mx, my, dx, dy);
+            //CamX = CamX + dx;
+            //CamY = CamY + dy;
+
+
+        }
+
+        public void UpdateViewMatrix()
+        {
+
+            ViewMat = OpenTK.Matrix4.Identity;
+
+        }
+
         public GameViewMap()
         {
             InitializeComponent();
@@ -31,6 +55,7 @@ namespace TrinityEditor.Controls.View._2D
             {
                 GGraph.Update();
                 View.Invalidate();
+                UpdateViewMatrix();
                 //TrinityEdit.CConsole.DebugMsg("update");
                 //TrinityEngine.Texture.Texture2D.UpdateLoading();
             };
@@ -41,6 +66,9 @@ namespace TrinityEditor.Controls.View._2D
                     resources = true;
                     GGraph.CreateResources();
                 }
+                GGraph.CenterX = View.ClientSize.Width / 2;
+                GGraph.CenterY = View.ClientSize.Height / 2;
+                GGraph.ViewMatrix = ViewMat;
                 GGraph.PreRender();
                 GGraph.Render();
                 //TrinityEdit.CConsole.DebugMsg("Rendered.");
@@ -51,6 +79,9 @@ namespace TrinityEditor.Controls.View._2D
 
 
             };
+            CamX = CamY = 0;
+            CamZ = 1;
+            CamRotation = 0;
 
         }
     }

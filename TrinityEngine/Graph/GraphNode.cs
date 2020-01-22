@@ -8,12 +8,29 @@ namespace TrinityEngine.Graph
 {
     public class GraphNode 
     {
+        public float CenterX
+        {
+            get;
+            set;
+        }
+
+        public float CenterY
+        {
+            get;
+            set;
+        }
+
         public string Name
         {
             get;
             set;
         }
 
+        public GameGraph Owner
+        {
+            get;
+            set;
+        }
 
 
         public GraphNode Root
@@ -71,6 +88,8 @@ namespace TrinityEngine.Graph
         {
             foreach(var node in Nodes)
             {
+                node.CenterX = CenterX;
+                node.CenterY = CenterY;
                 node.Render();
             }
         }

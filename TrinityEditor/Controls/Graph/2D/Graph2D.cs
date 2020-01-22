@@ -51,12 +51,12 @@ namespace TrinityEditor.Controls.Graph._2D
             {
 
                 TrinityEngine.Graph.GraphNode2DMap new_node = new TrinityEngine.Graph.GraphNode2DMap(mw, mh, tw, th, lc, name);
-
+                new_node.Owner = GGraph;
 
                 var curNode = View.SelectedNode;
                 if (curNode == null) return;
                 var p_node = curNode.Tag as TrinityEngine.Graph.GraphNode2D;
-
+                if (p_node == null) return;
                 p_node.AddNode(new_node);
 
                 new_node.CreateResources();
