@@ -60,6 +60,40 @@ namespace TrinityEngine.Graph
 
         }
 
+        public virtual GraphHit Pick(int mx,int my)
+        {
+
+            GraphHit hit = new GraphHit();
+
+            return PickNode(RootNode,mx,my);
+
+
+            return hit;
+
+        }
+
+        public virtual GraphHit PickNode(GraphNode node,int mx,int my)
+        {
+
+            if (node.InBounds(mx, my))
+            {
+
+                return node.Pick(mx, my);
+
+            }
+
+            foreach(var sub in node.Nodes)
+            {
+                var ret = PickNode(sub, mx, my);
+                if (ret != null) return ret;
+            }
+
+            return null;
+
+        }
+
+
+
         public virtual void Update()
         {
             RootNode.Update();

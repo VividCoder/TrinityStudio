@@ -48,6 +48,29 @@ namespace TrinityEngine.Graph
 
         }
         public static GraphNode2DMap NM = null;
+
+        public override bool InBounds(int mx, int my)
+        {
+            //Console.WriteLine("Checking map bounds.");
+
+            return NodeMap.InBounds(mx, my);
+
+            //return base.InBounds(mx, my);
+        }
+
+        public override GraphHit Pick(int mx, int my)
+        {
+
+            GraphHit hit = new GraphHit();
+
+            return NodeMap.Pick(mx, my);
+
+            return hit;
+
+            //return base.Pick(mx, my);
+            
+        }
+
         public override void Render()
         {
             NM = this;

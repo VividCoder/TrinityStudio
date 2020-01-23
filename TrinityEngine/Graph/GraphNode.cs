@@ -68,6 +68,16 @@ namespace TrinityEngine.Graph
 
         }
 
+        public virtual bool InBounds(int mx,int my)
+        {
+            return false;
+        }
+
+        public virtual GraphHit Pick(int mx,int my)
+        {
+            return null;
+        }
+
         public virtual void Update() {
 
             UpdateNodes();

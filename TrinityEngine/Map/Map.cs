@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using TrinityEngine.Map.Layer;
 using TrinityEngine.Map;
+using OpenTK;
+
 namespace TrinityEngine.Map
 {
     public class Map 
@@ -172,6 +174,100 @@ namespace TrinityEngine.Map
 
         public Texture.Texture2D NoTileTex = null;
 
+
+        private float sign(Vector2 p1, Vector2 p2, Vector2 p3)
+        {
+            return (p1.X - p3.X) * (p2.Y - p3.Y) - (p2.X - p3.X) * (p1.Y - p3.Y);
+        }
+
+        private bool PointInTriangle(Vector2 pt, Vector2 v1, Vector2 v2, Vector2 v3)
+        {
+            bool b1, b2, b3;
+
+            b1 = sign(pt, v1, v2) < 0.0f;
+            b2 = sign(pt, v2, v3) < 0.0f;
+            b3 = sign(pt, v3, v1) < 0.0f;
+
+            return ((b1 == b2) && (b2 == b3));
+        }
+
+        public Graph.GraphHit Pick(int mx,int my)
+        {
+
+            Vector2 mv = new Vector2(mx, my);
+
+            Graph.GraphMapHit hit = new Graph.GraphMapHit();
+
+            for(int y = 0; y < Layers[0].Height; y++)
+            {
+                for(int x = 0; x < Layers[0].Width; x++)
+                {
+                    var coords = GetRenderPos(x, y);
+
+                    var h1 = PointInTriangle(mv, coords[0], coords[1], coords[2]);
+                    var h2 = PointInTriangle(mv, coords[2], coords[3], coords[0]);
+
+                    if(h1 || h2)
+                    {
+
+
+                        hit.Map = this;
+                        
+                        hit.TileX = x;
+                        hit.TileY = y;
+
+                        hit.X = x;
+                        hit.Y = y;
+
+                        hit.Dist = 0;
+
+                        return hit;
+
+
+                    }
+
+                }
+            }
+
+            return null;
+
+        }
+
+        public void ClearHighlights()
+        {
+
+            HL.Clear();
+
+        }
+
+        public bool InBounds(int mx,int my)
+        {
+
+            var p1 = GetRenderPos(0, 0);
+            var p2 = GetRenderPos(Layers[0].Width - 1,0);
+            var p3 = GetRenderPos(Layers[0].Width-1, Layers[0].Height-1);
+            var p4 = GetRenderPos(0, Layers[0].Height - 1);
+
+            var mv = new Vector2(mx, my);
+
+            var h1 = PointInTriangle(mv, p1[0], p2[1],p3[2]);
+            var h2 = PointInTriangle(mv, p3[2], p4[3], p1[0]);
+
+            if(h1 || h2)
+            {
+                return true;
+            }
+
+           // Console.WriteLine("Ok");
+            return false;
+
+            //var h1 = PointInTriangle(new Vector2(mx,my),p1[0],)
+            
+
+
+
+        }
+
         public OpenTK.Vector2[] GetRenderPos(int x,int y)
         {
 
@@ -230,12 +326,30 @@ namespace TrinityEngine.Map
                         {
                             Draw.IntelliDraw.DrawImg(renX, renY, TileWidth, TileHeight, NoTileTex, new OpenTK.Vector4(1, 1, 1, 1));
                         }
+                        
                     }
                 }
                 ln++;
             }
 
+            
             Draw.IntelliDraw.EndDraw2DViewMatrix();
+
+
+            Draw.IntelliDraw.BeginDraw();
+
+            foreach(var hl in HL)
+            {
+
+                int rx = hl.X * TileWidth - (int)CamX;
+                int ry = hl.Y * TileHeight - (int)CamY;
+
+                Draw.IntelliDraw.DrawImg(rx, ry, TileWidth, TileHeight, HLTileTex,new Vector4(1,1,1,1));
+
+            }
+
+            Draw.IntelliDraw.EndDraw2DViewMatrix();
+
         }
 
         MapLayer GetLayer(int index)
@@ -265,10 +379,10 @@ namespace TrinityEngine.Map
 
         public void CreateResources()
         {
-            NoTileTex = new Texture.Texture2D("Content/Edit/highlight1.png", Texture.LoadMethod.Single, true);
-
+           HLTileTex = new Texture.Texture2D("Content/Edit/highlight1.png", Texture.LoadMethod.Single, true);
+            NoTileTex = new Texture.Texture2D("Content/Edit/notile.png", Texture.LoadMethod.Single, true);
         }
-
+        public Texture.Texture2D HLTileTex = null;
         public bool sceneChanged = false;
         
 

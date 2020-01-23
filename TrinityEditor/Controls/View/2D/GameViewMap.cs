@@ -32,7 +32,28 @@ namespace TrinityEditor.Controls.View._2D
         public override void MouseMove(int mx, int my, int dx, int dy)
         {
 
-            Console.WriteLine("MX:" + mx + " MY:" + my + " DX:" + dx + " DY:" + dy);
+            //Console.WriteLine("MX:" + mx + " MY:" + my + " DX:" + dx + " DY:" + dy);
+
+            var hit = GGraph.Pick(mx, my);
+
+            if (hit != null)
+            {
+                //Console.WriteLine("Hit. X:" + hit.X + " Y:" + hit.Y);
+
+                if(hit is TrinityEngine.Graph.GraphMapHit)
+                {
+                    var hm = hit as TrinityEngine.Graph.GraphMapHit;
+
+                    hm.Map.ClearHighlights();
+
+                     hm.Map.HighlightTile(hm.TileX, hm.TileY);
+
+                    //Console.WriteLine("Yep");
+
+                }
+
+            }
+
             //ase.MouseMove(mx, my, dx, dy);
             //CamX = CamX + dx;
             //CamY = CamY + dy;
