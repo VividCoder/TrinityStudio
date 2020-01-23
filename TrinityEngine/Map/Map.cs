@@ -311,20 +311,35 @@ namespace TrinityEngine.Map
 
             int ln = 0;
 
+            
+
             foreach(var lay in Layers)
             {
 
                 for(int y = 0; y < lay.Height; y++)
                 {
+                    bool any = false;
                     for(int x = 0; x < lay.Width; x++)
                     {
 
                         int renX = x * TileWidth - (int)CamX;
                         int renY = y * TileHeight - (int)CamY;
 
-                        if (ln == Layers.Count - 1)
+                        var tile = lay.Tiles[x, y];
+
+                        if (tile != null)
                         {
-                            Draw.IntelliDraw.DrawImg(renX, renY, TileWidth, TileHeight, NoTileTex, new OpenTK.Vector4(1, 1, 1, 1));
+
+                            Draw.IntelliDraw.DrawImg(renX, renY, TileWidth, TileHeight, tile.ColorImage, new Vector4(1, 1, 1, 1));
+                       //     any = true;
+
+                        }
+                        else
+                        {
+                           if (ln == 0)
+                            {
+                                Draw.IntelliDraw.DrawImg(renX, renY, TileWidth, TileHeight, NoTileTex, new OpenTK.Vector4(1, 1, 1, 1));
+                            }
                         }
                         
                     }
@@ -332,6 +347,7 @@ namespace TrinityEngine.Map
                 ln++;
             }
 
+            
             
             Draw.IntelliDraw.EndDraw2DViewMatrix();
 

@@ -54,6 +54,8 @@ namespace TrinityEditor.Controls.Selector
 
             tse.Show();
 
+            tse.RebuildMap();
+
              //foreach(var set in Sets)
             //{
 

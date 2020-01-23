@@ -16,6 +16,12 @@ namespace TrinityEngine.Map.Layer
             set;
         }
 
+        public bool[,] TilesMask
+        {
+            get;
+            set;
+        }
+
         public int Width
         {
             get;
