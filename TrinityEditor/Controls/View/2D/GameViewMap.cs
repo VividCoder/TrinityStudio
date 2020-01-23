@@ -17,7 +17,10 @@ namespace TrinityEditor.Controls.View._2D
         public OpenTK.Matrix4 ViewMat;
 
         public float CamX, CamY, CamZ;
-        public float CamRotation;
+        public float CamRotation = 0;
+
+        public bool DragOn = false;
+        public bool RotOn = false;
 
         public override void SetGameGraph(TrinityEngine.Graph.GameGraph graph)
         {
@@ -29,8 +32,50 @@ namespace TrinityEditor.Controls.View._2D
         int x = 20;
         bool resources = false;
 
+
+        public override void MouseDown(int b)
+        {
+            if (b == 1)
+            {
+                DragOn = true;
+            }
+            if (b == 2)
+            {
+                
+                RotOn = true;
+            }
+        }
+
+        public override void MouseUp(int b)
+        {
+            if (b == 1)
+            {
+                DragOn = false;
+            }
+            if (b == 2)
+            {
+                RotOn = false;
+            }
+        }
+
         public override void MouseMove(int mx, int my, int dx, int dy)
         {
+
+            if (DragOn)
+            {
+
+                CamX -= dx;
+                CamY -= dy;
+
+
+            }
+
+            if (RotOn)
+            {
+
+                CamRotation += dx;
+
+            }
 
             //Console.WriteLine("MX:" + mx + " MY:" + my + " DX:" + dx + " DY:" + dy);
 
@@ -64,7 +109,10 @@ namespace TrinityEditor.Controls.View._2D
         public void UpdateViewMatrix()
         {
 
-            ViewMat = OpenTK.Matrix4.Identity;
+            ViewMat = OpenTK.Matrix4.CreateRotationZ(OpenTK.MathHelper.DegreesToRadians(CamRotation));
+            OpenTK.Matrix4 tm = OpenTK.Matrix4.CreateTranslation(new OpenTK.Vector3((View.ClientSize.Width/2)-CamX,(View.ClientSize.Height/2)-CamY, 0));
+
+            ViewMat = ViewMat * tm;
 
         }
         TrinityEngine.Texture.Texture2D testc = null;
@@ -77,6 +125,7 @@ namespace TrinityEditor.Controls.View._2D
                 GGraph.Update();
                 View.Invalidate();
                 UpdateViewMatrix();
+                GGraph.SetViewMatrix(ViewMat);
                 //TrinityEdit.CConsole.DebugMsg("update");
                 //TrinityEngine.Texture.Texture2D.UpdateLoading();
             };

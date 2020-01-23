@@ -81,10 +81,10 @@ namespace TrinityEngine.Graph
 
             vm = vm * tm;
 
-       //     vm = vm * OpenTK.Matrix4.CreateTranslation(new OpenTK.Vector3(CamX, CamY, 0));
+            //     vm = vm * OpenTK.Matrix4.CreateTranslation(new OpenTK.Vector3(CamX, CamY, 0));
 
 
-            NodeMap.ViewMatrix = vm;
+            NodeMap.ViewMatrix = Owner.ViewMatrix;
 
 
             //NodeMap.CamX = CenterX;

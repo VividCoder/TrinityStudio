@@ -52,6 +52,11 @@ namespace TrinityEngine.Graph
             set;
         }
 
+        public void SetViewMatrix(OpenTK.Matrix4 mat)
+        {
+            ViewMatrix = mat;
+        }
+
         public GameGraph()
         {
 
