@@ -23,6 +23,9 @@ namespace TrinityEditor
         public static GameView CGameView;
         public static GraphTree CGraphTree;
         public static GameGraph GGraph;
+        public static Controls.Editors.Tileset.TilesetEditor FTilesetEdit;
+
+        public static List<TrinityEngine.Map.TileSet.TileSet> Sets = new List<TrinityEngine.Map.TileSet.TileSet>();
 
         public static void NewMap()
         {
@@ -57,6 +60,28 @@ namespace TrinityEditor
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void tilesetEditorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var selector = new TrinityEditor.Controls.Selector.TilesetSelector();
+
+            selector.Sets = Sets;
+
+            selector.Show();
+
+            selector.Rebuild();
+         
+          //  FTilesetEdit = new Controls.Editors.Tileset.TilesetEditor();
+         //   FTilesetEdit.Show();
+        }
+
+        private void newTilesetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var newSet = new Controls.Info.GetNewTilesetMetrics();
+
+            newSet.Show();
+
         }
     }
 }
