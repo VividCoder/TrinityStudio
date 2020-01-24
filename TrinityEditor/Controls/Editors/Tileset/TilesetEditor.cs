@@ -67,6 +67,7 @@ namespace TrinityEditor.Controls.Editors.Tileset
         }
         bool firstM = true;
         private int lastMx, lastMy;
+        TrinityEngine.Graph.GraphMapHit p_hit = null;
         private void View_MouseMove(object sender, MouseEventArgs e)
         {
             if (firstM)
@@ -84,7 +85,34 @@ namespace TrinityEditor.Controls.Editors.Tileset
                 PreviewMap.CamY -= (e.Y - lastMy);
                 //MouseMove(e.X, e.Y, e.X - lastMx, e.Y - lastMy);
 
-             
+
+            }
+            else
+            {
+
+                var hit = PreviewMap.Pick(e.X,e.Y);
+                p_hit = null;
+                if (hit != null)
+                {
+                    //Console.WriteLine("Hit. X:" + hit.X + " Y:" + hit.Y);
+
+                    if (hit is TrinityEngine.Graph.GraphMapHit)
+                    {
+                        var hm = hit as TrinityEngine.Graph.GraphMapHit;
+
+                        hm.Map.ClearHighlights();
+
+                        hm.Map.HighlightTile(hm.TileX, hm.TileY);
+
+                        //Console.WriteLine("Yep");
+
+                        p_hit = hm;
+
+                    }
+
+                }
+
+
             }
             lastMx = e.X;
             lastMy = e.Y;
@@ -97,6 +125,22 @@ namespace TrinityEditor.Controls.Editors.Tileset
             if(e.Button == MouseButtons.Right)
             {
                 DragOn = false;
+            }
+            if(e.Button == MouseButtons.Left)
+            {
+
+                if (p_hit != null)
+                {
+
+                    var htile = p_hit.Tile;
+
+                    if (htile != null)
+                    {
+                        propGrid.Text = htile.ImagePath;
+                        propGrid.SelectedObject = htile;
+                    }
+                }
+
             }
 
             //throw new NotImplementedException();

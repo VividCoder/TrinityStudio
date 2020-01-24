@@ -133,6 +133,12 @@
     <Compile Include="Controls\Selector\TilesetSelector.Designer.cs">
       <DependentUpon>TilesetSelector.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Splash\VividSplash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Splash\VividSplash.Designer.cs">
+      <DependentUpon>VividSplash.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\View\2D\GameViewMap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -174,6 +180,9 @@
     <EmbeddedResource Include="Controls\Selector\TilesetSelector.resx">
       <DependentUpon>TilesetSelector.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Splash\VividSplash.resx">
+      <DependentUpon>VividSplash.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\View\GameView.resx">
       <DependentUpon>GameView.cs</DependentUpon>
     </EmbeddedResource>
@@ -210,6 +219,12 @@
       <Project>{f7436382-566d-456c-8213-1931e7318bc3}</Project>
       <Name>TrinityEngine</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\untitled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

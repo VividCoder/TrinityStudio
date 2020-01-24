@@ -24,7 +24,8 @@ namespace TrinityEditor
         public static GraphTree CGraphTree;
         public static GameGraph GGraph;
         public static Controls.Editors.Tileset.TilesetEditor FTilesetEdit;
-
+        public static Controls.Splash.VividSplash FSplash = null;
+        public static TrinityEdit FThis;
         public static List<TrinityEngine.Map.TileSet.TileSet> Sets = new List<TrinityEngine.Map.TileSet.TileSet>();
 
         public static void NewMap()
@@ -38,8 +39,14 @@ namespace TrinityEditor
 
             CConsole = new ConsoleOutput();
             CConsole.Show(this.dockPanel1, WeifenLuo.WinFormsUI.Docking.DockState.DockBottom);
-
+            FThis = this;
             Begin2DMapMode();
+            Hide();
+
+            FSplash = new Controls.Splash.VividSplash();
+            FSplash.Show();
+
+
         }
 
         private void Begin2DMapMode()

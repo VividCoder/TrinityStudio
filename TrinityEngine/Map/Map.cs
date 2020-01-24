@@ -215,6 +215,7 @@ namespace TrinityEngine.Map
                         
                         hit.TileX = x;
                         hit.TileY = y;
+                        hit.Tile = Layers[0].Tiles[x, y];
 
                         hit.X = x;
                         hit.Y = y;

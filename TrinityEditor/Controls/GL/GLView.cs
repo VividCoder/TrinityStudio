@@ -56,6 +56,12 @@ namespace TrinityEditor.Controls.Graphics
 
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 
+            TrinityEngine.AppInfo.Info.ViewWidth = ClientSize.Width;
+            TrinityEngine.AppInfo.Info.ViewHeight = ClientSize.Height;
+            TrinityEngine.AppInfo.Info.CurWidth = ClientSize.Width;
+            TrinityEngine.AppInfo.Info.CurHeight = ClientSize.Height;
+            GL.Viewport(0, 0, ClientSize.Width, ClientSize.Height);
+
             RenderCall?.Invoke();
 
             SwapBuffers();

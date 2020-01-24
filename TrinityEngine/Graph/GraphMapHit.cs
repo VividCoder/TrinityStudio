@@ -8,6 +8,12 @@ namespace TrinityEngine.Graph
 {
     public class GraphMapHit : GraphHit
     {
+
+        public Map.Tile.Tile Tile
+        {
+            get;
+            set;
+        }
         public int TileX
         {
             get;
