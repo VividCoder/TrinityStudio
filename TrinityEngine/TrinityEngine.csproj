@@ -1,5 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\TrinityEditor\packages\SharpFont.4.0.1\build\SharpFont.props" Condition="Exists('..\TrinityEditor\packages\SharpFont.4.0.1\build\SharpFont.props')" />
+  <Import Project="..\TrinityEditor\packages\SharpFont.Dependencies.2.6\build\SharpFont.Dependencies.props" Condition="Exists('..\TrinityEditor\packages\SharpFont.Dependencies.2.6\build\SharpFont.Dependencies.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -13,6 +15,8 @@
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -61,6 +65,9 @@
     <Reference Include="OpenTK.GLControl, Version=3.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
       <HintPath>..\TrinityEditor\packages\OpenTK.GLControl.3.1.0\lib\net20\OpenTK.GLControl.dll</HintPath>
     </Reference>
+    <Reference Include="SharpFont, Version=4.0.1.200, Culture=neutral, PublicKeyToken=48add4c483071cdf, processorArchitecture=MSIL">
+      <HintPath>..\TrinityEditor\packages\SharpFont.4.0.1\lib\net45\SharpFont.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -89,9 +96,12 @@
     <Compile Include="Effect\FXG.cs" />
     <Compile Include="Effect\FXMultiPass.cs" />
     <Compile Include="Effect\FXParticle.cs" />
+    <Compile Include="Font2\OrchidFont.cs" />
     <Compile Include="Framebuffer\FrameBufferColor.cs" />
     <Compile Include="Framebuffer\FrameBufferCube.cs" />
     <Compile Include="Framebuffer\FrameBufferMRT.cs" />
+    <Compile Include="Game\GameInfo.cs" />
+    <Compile Include="Game\LevelInfo.cs" />
     <Compile Include="Graph\GameGraph.cs" />
     <Compile Include="Graph\GameGraph2D.cs" />
     <Compile Include="Graph\GraphHit.cs" />
@@ -102,6 +112,8 @@
     <Compile Include="Graph\IGraphRenderable.cs" />
     <Compile Include="Graph\IGraphUpdatable.cs" />
     <Compile Include="Help\IOHelp.cs" />
+    <Compile Include="Input\AppInput.cs" />
+    <Compile Include="Input\Input.cs" />
     <Compile Include="Map\GraphMarker.cs" />
     <Compile Include="Map\Layer\MapLayer.cs" />
     <Compile Include="Map\Map.cs" />
@@ -109,6 +121,39 @@
     <Compile Include="Map\Tile\Tile.cs" />
     <Compile Include="Maths\Maths.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resonance\Forms\ButtonForm.cs" />
+    <Compile Include="Resonance\Forms\CheckBoxForm.cs" />
+    <Compile Include="Resonance\Forms\ContextMenuForm.cs" />
+    <Compile Include="Resonance\Forms\DockAreaForm.cs" />
+    <Compile Include="Resonance\Forms\DragObject.cs" />
+    <Compile Include="Resonance\Forms\DragZoneForm.cs" />
+    <Compile Include="Resonance\Forms\DropDownListForm.cs" />
+    <Compile Include="Resonance\Forms\EventForm.cs" />
+    <Compile Include="Resonance\Forms\Graph3DForm.cs" />
+    <Compile Include="Resonance\Forms\GroupForm.cs" />
+    <Compile Include="Resonance\Forms\HorizontalSplitForm.cs" />
+    <Compile Include="Resonance\Forms\ImageForm.cs" />
+    <Compile Include="Resonance\Forms\ItemForm.cs" />
+    <Compile Include="Resonance\Forms\LabelForm.cs" />
+    <Compile Include="Resonance\Forms\ListForm.cs" />
+    <Compile Include="Resonance\Forms\MainMenuForm.cs" />
+    <Compile Include="Resonance\Forms\PanelForm.cs" />
+    <Compile Include="Resonance\Forms\RequestFileForm.cs" />
+    <Compile Include="Resonance\Forms\ScrollBarV.cs" />
+    <Compile Include="Resonance\Forms\SelectionForm.cs" />
+    <Compile Include="Resonance\Forms\TabForm.cs" />
+    <Compile Include="Resonance\Forms\TextAreaForm.cs" />
+    <Compile Include="Resonance\Forms\TextBoxForm.cs" />
+    <Compile Include="Resonance\Forms\ToolBarForm.cs" />
+    <Compile Include="Resonance\Forms\TreeNode.cs" />
+    <Compile Include="Resonance\Forms\TreeViewForm.cs" />
+    <Compile Include="Resonance\Forms\VerticalSplitterForm.cs" />
+    <Compile Include="Resonance\Forms\VideoForm.cs" />
+    <Compile Include="Resonance\Forms\WindowForm.cs" />
+    <Compile Include="Resonance\SimpleUI.cs" />
+    <Compile Include="Resonance\UI.cs" />
+    <Compile Include="Resonance\UIDock.cs" />
+    <Compile Include="Resonance\UIForm.cs" />
     <Compile Include="Sound\VSoundSys.cs" />
     <Compile Include="State\VividState.cs" />
     <Compile Include="Symbiosis\ObjectConnector.cs" />
@@ -127,4 +172,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\TrinityEditor\packages\SharpFont.Dependencies.2.6\build\SharpFont.Dependencies.props')" Text="$([System.String]::Format('$(ErrorText)', '..\TrinityEditor\packages\SharpFont.Dependencies.2.6\build\SharpFont.Dependencies.props'))" />
+    <Error Condition="!Exists('..\TrinityEditor\packages\SharpFont.4.0.1\build\SharpFont.props')" Text="$([System.String]::Format('$(ErrorText)', '..\TrinityEditor\packages\SharpFont.4.0.1\build\SharpFont.props'))" />
+  </Target>
 </Project>

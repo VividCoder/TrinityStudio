@@ -165,7 +165,10 @@ namespace TrinityEngine.Draw
         }
 
         static bool begun = false;
-        
+        public static void EndDraw()
+        {
+            EndDraw2D();
+        }
         public static void EndDraw2D()
         {
             if (!begun) return;

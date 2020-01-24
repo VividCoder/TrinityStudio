@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 
-namespace Vivid.Font2
+namespace TrinityEngine.Font2
 {
     public class OrchidFont
     {
@@ -53,12 +53,12 @@ namespace Vivid.Font2
             return GenString("A").H;
         }
 
-        public Vivid.Texture.Texture2D GenString(string text)
+        public TrinityEngine.Texture.Texture2D GenString(string text)
         {
             return GenString(text, Color.White, Color.Black);
         }
 
-        public Vivid.Texture.Texture2D GenString(string text, Color fore, Color bg)
+        public TrinityEngine.Texture.Texture2D GenString(string text, Color fore, Color bg)
         {
             if (Cache.ContainsKey(text))
             {

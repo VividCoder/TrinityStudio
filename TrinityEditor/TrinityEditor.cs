@@ -25,8 +25,11 @@ namespace TrinityEditor
         public static GameGraph GGraph;
         public static Controls.Editors.Tileset.TilesetEditor FTilesetEdit;
         public static Controls.Splash.VividSplash FSplash = null;
+        public static Controls.Editors.Level.LevelEditor FLevelEditor;
+        public static Controls.View.Preview.PreviewGame FPreviewGame;
         public static TrinityEdit FThis;
         public static List<TrinityEngine.Map.TileSet.TileSet> Sets = new List<TrinityEngine.Map.TileSet.TileSet>();
+        public static TrinityEngine.Game.GameInfo IGameInfo = null;
 
         public static void NewMap()
         {
@@ -48,6 +51,10 @@ namespace TrinityEditor
             FSplash.Show();
 
             CConsole.DebugMsg("Vivid3D Initialized.");
+            IGameInfo = new TrinityEngine.Game.GameInfo();
+            IGameInfo.LevelInfo = new TrinityEngine.Game.LevelInfo();
+            IGameInfo.Levels.Add(IGameInfo.LevelInfo);
+
         }
 
         private void Begin2DMapMode()
@@ -89,6 +96,46 @@ namespace TrinityEditor
             var newSet = new Controls.Info.GetNewTilesetMetrics();
 
             newSet.Show();
+
+        }
+
+        private void levelEditorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            FLevelEditor = new Controls.Editors.Level.LevelEditor();
+
+            FLevelEditor.Show();
+            
+
+        }
+
+        private void toolStripButton5_Click(object sender, EventArgs e)
+        {
+            var preview = new TrinityEditor.Controls.View.Preview.PreviewGame();
+
+            preview.IGameInfo = IGameInfo;
+            CConsole.DebugMsg("Begining game preview in seperate display.");
+
+            preview.View.UpdateCall = () =>
+            {
+                preview.UpdatePreview();
+            };
+
+            preview.View.RenderCall = () =>
+            {
+                preview.RenderPreview();
+            };
+
+            preview.Show();
+
+            
+
+            //IGameInfo.Init = () =>
+           // {
+
+            //};
+
+            //IGameInfo.BeginGame();
 
         }
     }
