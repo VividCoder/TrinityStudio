@@ -23,5 +23,10 @@ namespace TrinityEditor.Controls.Feedback
             richTextBox1.Text = richTextBox1.Text + msg + "\n";
 ;
         }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -39,6 +39,7 @@ namespace TrinityEditor
 
             CConsole = new ConsoleOutput();
             CConsole.Show(this.dockPanel1, WeifenLuo.WinFormsUI.Docking.DockState.DockBottom);
+            CConsole.DebugMsg("Vivid3D initializing.");
             FThis = this;
             Begin2DMapMode();
             Hide();
@@ -46,7 +47,7 @@ namespace TrinityEditor
             FSplash = new Controls.Splash.VividSplash();
             FSplash.Show();
 
-
+            CConsole.DebugMsg("Vivid3D Initialized.");
         }
 
         private void Begin2DMapMode()

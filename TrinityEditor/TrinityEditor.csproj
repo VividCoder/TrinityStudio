@@ -151,6 +151,7 @@
     <Compile Include="Controls\View\GameView.Designer.cs">
       <DependentUpon>GameView.cs</DependentUpon>
     </Compile>
+    <Compile Include="FolderExt.cs" />
     <Compile Include="TrinityEditor.cs">
       <SubType>Form</SubType>
     </Compile>

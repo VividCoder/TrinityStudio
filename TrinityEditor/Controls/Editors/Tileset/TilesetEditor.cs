@@ -188,7 +188,45 @@ namespace TrinityEditor.Controls.Editors.Tileset
                 var new_Tile = new TrinityEngine.Map.Tile.Tile(fd.FileName);
                 Set.Tiles.Add(new_Tile);
                 RebuildMap();
+                TrinityEdit.CConsole.DebugMsg("Adding tile:" + fd.FileName + " to set:" + Set.Name);
+
             }
+        }
+
+        private void addFolderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var dialog = new FolderSelectDialog
+            {
+                InitialDirectory = Environment.CurrentDirectory,
+                Title = "Select a folder to tiles from."
+            };
+            if (dialog.Show(Handle))
+            {
+                TrinityEdit.CConsole.DebugMsg("Scanning folder:" + dialog.FileName + " for tiles.");
+                //musicFolderTextBox.Text = dialog.FileName;
+                foreach(var file in new System.IO.DirectoryInfo(dialog.FileName).GetFiles())
+                {
+                    TrinityEdit.CConsole.DebugMsg("File:" + file.Name);
+                    TrinityEdit.CConsole.DebugMsg("Ext:" + file.Extension);
+
+                    switch (file.Extension.ToLower())
+                    {
+                        case ".bmp":
+                        case ".jpg":
+                        case ".tga":
+                        case ".png":
+                            if (file.FullName.ToLower().Contains("nrm"))
+                            {
+                                continue;
+                            }
+                            var new_Tile = new TrinityEngine.Map.Tile.Tile(file.FullName);
+                            Set.Tiles.Add(new_Tile);
+                            break;
+                    }
+
+                }
+            }
+            RebuildMap();
         }
 
         public void RebuildMap()
