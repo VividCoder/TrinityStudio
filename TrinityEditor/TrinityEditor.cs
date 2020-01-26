@@ -30,6 +30,7 @@ namespace TrinityEditor
         public static TrinityEdit FThis;
         public static List<TrinityEngine.Map.TileSet.TileSet> Sets = new List<TrinityEngine.Map.TileSet.TileSet>();
         public static TrinityEngine.Game.GameInfo IGameInfo = null;
+        public static string PActiveLevel = "";
 
         public static void NewMap()
         {
@@ -54,6 +55,7 @@ namespace TrinityEditor
             IGameInfo = new TrinityEngine.Game.GameInfo();
             IGameInfo.LevelInfo = new TrinityEngine.Game.LevelInfo();
             IGameInfo.Levels.Add(IGameInfo.LevelInfo);
+            LoadActiveLevel();
 
         }
 
@@ -111,7 +113,7 @@ namespace TrinityEditor
 
         private void toolStripButton5_Click(object sender, EventArgs e)
         {
-            var preview = new TrinityEditor.Controls.View.Preview.PreviewGame();
+            var preview = new TrinityEditor.Controls.View.Preview.PreviewGame(IGameInfo);
 
             preview.IGameInfo = IGameInfo;
             CConsole.DebugMsg("Begining game preview in seperate display.");
@@ -137,6 +139,47 @@ namespace TrinityEditor
 
             //IGameInfo.BeginGame();
 
+        }
+
+        private void saveSceneAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var fd = new System.Windows.Forms.SaveFileDialog();
+
+            fd.InitialDirectory = Environment.CurrentDirectory;
+
+            fd.Title = "Save Level as...";
+
+            fd.AddExtension = true;
+
+            fd.DefaultExt = ".level";
+
+            fd.ShowDialog();
+
+            IGameInfo.LevelInfo.Save(fd.FileName);
+
+            PActiveLevel = fd.FileName;
+
+            SaveActiveLevel();
+
+
+
+
+
+        }
+
+        public void SaveActiveLevel()
+        {
+            System.IO.File.WriteAllText("activeLevel.info",PActiveLevel);
+        }
+
+        public void LoadActiveLevel()
+        {
+            if (System.IO.File.Exists("activeLevel.info"))
+            {
+                PActiveLevel = System.IO.File.ReadAllText("activeLevel.info");
+                IGameInfo.LevelInfo = new TrinityEngine.Game.LevelInfo(PActiveLevel);
+                
+            }
         }
     }
 }

@@ -18,9 +18,10 @@ namespace TrinityEditor.Controls.View.Preview
         private TrinityEngine.Resonance.UI pUI;
 
 
-        public PreviewGame()
+        public PreviewGame(TrinityEngine.Game.GameInfo game)
         {
             InitializeComponent();
+            IGameInfo = game;
 
             Size = new Size(800, 600);
 
@@ -35,7 +36,7 @@ namespace TrinityEditor.Controls.View.Preview
 
             var vidf = pUI.Root as TrinityEngine.Resonance.Forms.VideoForm;
 
-            vidf.SetVideo("Corona/video/intro2.mov");
+            vidf.SetVideo(IGameInfo.LevelInfo.IntroMoviePath);
 
         }
 

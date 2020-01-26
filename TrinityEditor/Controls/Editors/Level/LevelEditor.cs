@@ -13,6 +13,7 @@ namespace TrinityEditor.Controls.Editors.Level
     public partial class LevelEditor : Form
     {
 
+        public string LevelName = "";
         public string IntroMoviePath = "";
 
         public LevelEditor()
@@ -23,6 +24,7 @@ namespace TrinityEditor.Controls.Editors.Level
 
         public void SetLevelInfo()
         {
+            TrinityEdit.IGameInfo.LevelInfo.LevelName = LevelName;
             TrinityEdit.IGameInfo.LevelInfo.IntroMoviePath = IntroMoviePath;
         }
 
@@ -52,6 +54,13 @@ namespace TrinityEditor.Controls.Editors.Level
                 TrinityEdit.CConsole.DebugMsg("Set movie:" + fd.FileName + " as intro movie for level.");
                 SetLevelInfo();
             }
+        }
+
+        private void levelNameText_TextChanged(object sender, EventArgs e)
+        {
+            LevelName = levelNameText.Text;
+            SetLevelInfo();
+            TrinityEdit.CConsole.DebugMsg("Set Level name:" + LevelName);
         }
     }
 }
