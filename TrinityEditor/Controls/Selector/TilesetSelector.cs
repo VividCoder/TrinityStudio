@@ -12,6 +12,7 @@ namespace TrinityEditor.Controls.Selector
 {
     public partial class TilesetSelector : Form
     {
+        public bool JustSelect = false;
         public List<TrinityEngine.Map.TileSet.TileSet> Sets = new List<TrinityEngine.Map.TileSet.TileSet>();
         public TilesetSelector()
         {
@@ -36,7 +37,7 @@ namespace TrinityEditor.Controls.Selector
             }
 
         }
-
+        
         private void button1_Click(object sender, EventArgs e)
         {
 
@@ -44,11 +45,22 @@ namespace TrinityEditor.Controls.Selector
             if (setList.SelectedItems.Count > 1) return;
             var item = setList.SelectedItems[0];
 
+            TrinityEdit.CurTiles = item.Tag as TrinityEngine.Map.TileSet.TileSet;
+
+           
+
+            if (JustSelect)
+            {
+                return;
+            }
+
             var tse = new Controls.Editors.Tileset.TilesetEditor();
 
             var set = item.Tag as TrinityEngine.Map.TileSet.TileSet;
 
             tse.TilesetName = set.Name;
+
+            tse.Set = set;
 
             tse.Text = "Editing Set:" + set.Name;
 

@@ -31,6 +31,21 @@ namespace TrinityEditor
         public static List<TrinityEngine.Map.TileSet.TileSet> Sets = new List<TrinityEngine.Map.TileSet.TileSet>();
         public static TrinityEngine.Game.GameInfo IGameInfo = null;
         public static string PActiveLevel = "";
+        public static Controls.Selector.TileSelector CTileSelect;
+        public static TrinityEngine.Map.TileSet.TileSet CurTiles
+        {
+            get
+            {
+                return _CurTiles;
+            }
+            set
+            {
+                _CurTiles = value;
+                CTileSelect.Set = value;
+                CTileSelect.RebuildMap();
+            }
+        }
+        private static TrinityEngine.Map.TileSet.TileSet _CurTiles = null;
 
         public static void NewMap()
         {
@@ -70,6 +85,10 @@ namespace TrinityEditor
 
             CGraphTree.SetGameGraph(GGraph);
             CGameView.SetGameGraph(GGraph);
+
+            CTileSelect = new Controls.Selector.TileSelector();
+
+            CTileSelect.Show(this.dockPanel1, WeifenLuo.WinFormsUI.Docking.DockState.DockBottom);
             
 
         }
@@ -180,6 +199,24 @@ namespace TrinityEditor
                 IGameInfo.LevelInfo = new TrinityEngine.Game.LevelInfo(PActiveLevel);
                 
             }
+        }
+
+        private void selectTilesetForEditingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var selector = new TrinityEditor.Controls.Selector.TilesetSelector();
+
+            selector.Sets = Sets;
+
+            selector.JustSelect = true;
+
+            selector.Show();
+
+            selector.Rebuild();
+        }
+
+        private void updateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CTileSelect.RebuildMap();
         }
     }
 }

@@ -30,6 +30,8 @@ namespace TrinityEngine.Map
            
 
         }
+
+        public List<HighLightTile> ActiveTiles = new List<HighLightTile>();
         public List<MapLayer> Layers
         {
             get;
@@ -174,6 +176,11 @@ namespace TrinityEngine.Map
 
         public Texture.Texture2D NoTileTex = null;
 
+        public void SetActive(int tx,int ty)
+        {
+            ActiveTiles.Clear();
+            ActiveTiles.Add(new HighLightTile() { X = tx, Y = ty });
+        }
 
         private float sign(Vector2 p1, Vector2 p2, Vector2 p3)
         {
@@ -365,6 +372,17 @@ namespace TrinityEngine.Map
 
             }
 
+            foreach(var at in ActiveTiles)
+            {
+
+
+                int rx = at.X * TileWidth - (int)CamX;
+                int ry = at.Y * TileHeight - (int)CamY;
+
+                Draw.IntelliDraw.DrawImg(rx+TileWidth/2-16, ry-16, 32, 32, ActiveTex, new Vector4(1, 1,1, 1));
+
+            }
+
             Draw.IntelliDraw.EndDraw2DViewMatrix();
 
         }
@@ -398,8 +416,10 @@ namespace TrinityEngine.Map
         {
            HLTileTex = new Texture.Texture2D("Content/Edit/highlight1.png", Texture.LoadMethod.Single, true);
             NoTileTex = new Texture.Texture2D("Content/Edit/notile.png", Texture.LoadMethod.Single, true);
+            ActiveTex = new Texture.Texture2D("Content/Edit/down.png", Texture.LoadMethod.Single, true);
         }
         public Texture.Texture2D HLTileTex = null;
+        public Texture.Texture2D ActiveTex = null;
         public bool sceneChanged = false;
         
 

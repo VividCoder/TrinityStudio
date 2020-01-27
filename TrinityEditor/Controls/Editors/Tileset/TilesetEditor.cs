@@ -126,7 +126,20 @@ namespace TrinityEditor.Controls.Editors.Tileset
             {
                 DragOn = false;
             }
-            if(e.Button == MouseButtons.Left)
+          
+
+            //throw new NotImplementedException();
+        }
+
+        bool DragOn = false;
+
+        private void View_MouseDown(object sender, MouseEventArgs e)
+        {
+            if(e.Button == MouseButtons.Right)
+            {
+                DragOn = true;
+            }
+            if (e.Button == MouseButtons.Left)
             {
 
                 if (p_hit != null)
@@ -141,18 +154,6 @@ namespace TrinityEditor.Controls.Editors.Tileset
                     }
                 }
 
-            }
-
-            //throw new NotImplementedException();
-        }
-
-        bool DragOn = false;
-
-        private void View_MouseDown(object sender, MouseEventArgs e)
-        {
-            if(e.Button == MouseButtons.Right)
-            {
-                DragOn = true;
             }
             //throw new NotImplementedException();
         }

@@ -33,6 +33,9 @@
             this.vS2015DarkTheme1 = new WeifenLuo.WinFormsUI.Docking.VS2015DarkTheme();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.projectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadSceneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveSceneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveSceneAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,9 +57,8 @@
             this.dockPanel1 = new WeifenLuo.WinFormsUI.Docking.DockPanel();
             this.vS2015BlueTheme1 = new WeifenLuo.WinFormsUI.Docking.VS2015BlueTheme();
             this.vS2015DarkTheme2 = new WeifenLuo.WinFormsUI.Docking.VS2015DarkTheme();
-            this.loadSceneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveSceneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveSceneAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.selectTilesetForEditingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dockPanel1)).BeginInit();
@@ -84,8 +86,29 @@
             this.projectToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
             this.projectToolStripMenuItem.Text = "Project";
             // 
+            // loadSceneToolStripMenuItem
+            // 
+            this.loadSceneToolStripMenuItem.Name = "loadSceneToolStripMenuItem";
+            this.loadSceneToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.loadSceneToolStripMenuItem.Text = "Load Level";
+            // 
+            // saveSceneToolStripMenuItem
+            // 
+            this.saveSceneToolStripMenuItem.Name = "saveSceneToolStripMenuItem";
+            this.saveSceneToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.saveSceneToolStripMenuItem.Text = "Save Level";
+            // 
+            // saveSceneAsToolStripMenuItem
+            // 
+            this.saveSceneAsToolStripMenuItem.Name = "saveSceneAsToolStripMenuItem";
+            this.saveSceneAsToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.saveSceneAsToolStripMenuItem.Text = "Save Level As...";
+            this.saveSceneAsToolStripMenuItem.Click += new System.EventHandler(this.saveSceneAsToolStripMenuItem_Click);
+            // 
             // editToolStripMenuItem
             // 
+            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.updateToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
             this.editToolStripMenuItem.Text = "Edit";
@@ -103,22 +126,23 @@
             // 
             this.mapToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tilesetEditorToolStripMenuItem,
-            this.newTilesetToolStripMenuItem});
+            this.newTilesetToolStripMenuItem,
+            this.selectTilesetForEditingToolStripMenuItem});
             this.mapToolStripMenuItem.Name = "mapToolStripMenuItem";
-            this.mapToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
+            this.mapToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.mapToolStripMenuItem.Text = "Map";
             // 
             // tilesetEditorToolStripMenuItem
             // 
             this.tilesetEditorToolStripMenuItem.Name = "tilesetEditorToolStripMenuItem";
-            this.tilesetEditorToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.tilesetEditorToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
             this.tilesetEditorToolStripMenuItem.Text = "Tileset Editor";
             this.tilesetEditorToolStripMenuItem.Click += new System.EventHandler(this.tilesetEditorToolStripMenuItem_Click);
             // 
             // newTilesetToolStripMenuItem
             // 
             this.newTilesetToolStripMenuItem.Name = "newTilesetToolStripMenuItem";
-            this.newTilesetToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.newTilesetToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
             this.newTilesetToolStripMenuItem.Text = "New Tileset";
             this.newTilesetToolStripMenuItem.Click += new System.EventHandler(this.newTilesetToolStripMenuItem_Click);
             // 
@@ -127,7 +151,7 @@
             this.gameToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.levelEditorToolStripMenuItem});
             this.gameToolStripMenuItem.Name = "gameToolStripMenuItem";
-            this.gameToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
+            this.gameToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.gameToolStripMenuItem.Text = "Game";
             // 
             // levelEditorToolStripMenuItem
@@ -242,24 +266,19 @@
             this.dockPanel1.TabIndex = 2;
             this.dockPanel1.Theme = this.vS2015BlueTheme1;
             // 
-            // loadSceneToolStripMenuItem
+            // selectTilesetForEditingToolStripMenuItem
             // 
-            this.loadSceneToolStripMenuItem.Name = "loadSceneToolStripMenuItem";
-            this.loadSceneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.loadSceneToolStripMenuItem.Text = "Load Level";
+            this.selectTilesetForEditingToolStripMenuItem.Name = "selectTilesetForEditingToolStripMenuItem";
+            this.selectTilesetForEditingToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            this.selectTilesetForEditingToolStripMenuItem.Text = "Select Tileset for Editing";
+            this.selectTilesetForEditingToolStripMenuItem.Click += new System.EventHandler(this.selectTilesetForEditingToolStripMenuItem_Click);
             // 
-            // saveSceneToolStripMenuItem
+            // updateToolStripMenuItem
             // 
-            this.saveSceneToolStripMenuItem.Name = "saveSceneToolStripMenuItem";
-            this.saveSceneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.saveSceneToolStripMenuItem.Text = "Save Level";
-            // 
-            // saveSceneAsToolStripMenuItem
-            // 
-            this.saveSceneAsToolStripMenuItem.Name = "saveSceneAsToolStripMenuItem";
-            this.saveSceneAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.saveSceneAsToolStripMenuItem.Text = "Save Level As...";
-            this.saveSceneAsToolStripMenuItem.Click += new System.EventHandler(this.saveSceneAsToolStripMenuItem_Click);
+            this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
+            this.updateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.updateToolStripMenuItem.Text = "Update";
+            this.updateToolStripMenuItem.Click += new System.EventHandler(this.updateToolStripMenuItem_Click);
             // 
             // TrinityEdit
             // 
@@ -310,6 +329,8 @@
         private System.Windows.Forms.ToolStripMenuItem loadSceneToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveSceneToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveSceneAsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem selectTilesetForEditingToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem updateToolStripMenuItem;
     }
 }
 

@@ -133,6 +133,9 @@
     <Compile Include="Controls\Info\GetNewTilesetMetrics.Designer.cs">
       <DependentUpon>GetNewTilesetMetrics.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Selector\TileSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Controls\Selector\TilesetSelector.cs">
       <SubType>Form</SubType>
     </Compile>

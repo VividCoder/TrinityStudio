@@ -30,6 +30,8 @@ namespace TrinityEditor.Controls.Info
             
             TrinityEdit.Sets.Add(new_Set);
 
+            TrinityEdit.CurTiles = new_Set;
+
             tse.Set = new_Set;
 
             tse.Text = "Editing:" + new_Set.Name;
