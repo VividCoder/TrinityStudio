@@ -1,0 +1,16 @@
+C:\Git\TrinityStudio\TrinityEngine\bin\x64\Debug\TrinityEngine.dll
+C:\Git\TrinityStudio\TrinityEngine\bin\x64\Debug\TrinityEngine.pdb
+C:\Git\TrinityStudio\TrinityEngine\bin\x64\Debug\OpenTK.dll
+C:\Git\TrinityStudio\TrinityEngine\bin\x64\Debug\OpenTK.GLControl.dll
+C:\Git\TrinityStudio\TrinityEngine\bin\x64\Debug\OpenTK.pdb
+C:\Git\TrinityStudio\TrinityEngine\bin\x64\Debug\OpenTK.xml
+C:\Git\TrinityStudio\TrinityEngine\bin\x64\Debug\OpenTK.GLControl.pdb
+C:\Git\TrinityStudio\TrinityEngine\bin\x64\Debug\OpenTK.GLControl.xml
+C:\Git\TrinityStudio\TrinityEngine\obj\x64\Debug\TrinityEngine.csprojAssemblyReference.cache
+C:\Git\TrinityStudio\TrinityEngine\obj\x64\Debug\TrinityEngine.csproj.CopyComplete
+C:\Git\TrinityStudio\TrinityEngine\obj\x64\Debug\TrinityEngine.dll
+C:\Git\TrinityStudio\TrinityEngine\obj\x64\Debug\TrinityEngine.pdb
+C:\Git\TrinityStudio\TrinityEngine\bin\x64\Debug\SharpFont.dll.config
+C:\Git\TrinityStudio\TrinityEngine\bin\x64\Debug\freetype6.dll
+C:\Git\TrinityStudio\TrinityEngine\bin\x64\Debug\SharpFont.dll
+C:\Git\TrinityStudio\TrinityEngine\bin\x64\Debug\SharpFont.xml
