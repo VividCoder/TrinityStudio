@@ -62,7 +62,9 @@ namespace TrinityEditor
             CConsole.Show(this.dockPanel1, WeifenLuo.WinFormsUI.Docking.DockState.DockBottom);
             CConsole.DebugMsg("Vivid3D initializing.");
             FThis = this;
-            Begin2DMapMode();
+            
+            Begin3DMapMode();
+
             Hide();
 
             FSplash = new Controls.Splash.VividSplash();
@@ -90,6 +92,21 @@ namespace TrinityEditor
             {
                 CGameView.LoadState("EditState.edit");
             }
+        }
+
+        private void Begin3DMapMode()
+        {
+
+            CGameView = new Controls.View._3D.GameView3D();
+            CGameView.Show(this.dockPanel1, WeifenLuo.WinFormsUI.Docking.DockState.Document);
+            CGraphTree = new Controls.Graph._3D.Graph3D();
+            CGraphTree.Show(this.dockPanel1, WeifenLuo.WinFormsUI.Docking.DockState.DockLeft);
+
+            GGraph = new GameGraph3D();
+            CGraphTree.SetGameGraph(GGraph);
+
+
+
         }
         
         private void Begin2DMapMode()

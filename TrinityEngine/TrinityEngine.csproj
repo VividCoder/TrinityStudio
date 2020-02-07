@@ -104,11 +104,13 @@
     <Compile Include="Game\LevelInfo.cs" />
     <Compile Include="Graph\GameGraph.cs" />
     <Compile Include="Graph\GameGraph2D.cs" />
+    <Compile Include="Graph\GameGraph3D.cs" />
     <Compile Include="Graph\GraphHit.cs" />
     <Compile Include="Graph\GraphMapHit.cs" />
     <Compile Include="Graph\GraphNode.cs" />
     <Compile Include="Graph\GraphNode2D.cs" />
     <Compile Include="Graph\GraphNode2DMap.cs" />
+    <Compile Include="Graph\GraphNode3D.cs" />
     <Compile Include="Graph\IGraphRenderable.cs" />
     <Compile Include="Graph\IGraphUpdatable.cs" />
     <Compile Include="Help\IOHelp.cs" />

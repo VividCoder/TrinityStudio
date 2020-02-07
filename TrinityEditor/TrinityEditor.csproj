@@ -114,6 +114,12 @@
     <Compile Include="Controls\Graph\2D\Graph2D.Designer.cs">
       <DependentUpon>Graph2D.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Graph\3D\Graph3D.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Graph\3D\Graph3D.Designer.cs">
+      <DependentUpon>Graph3D.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Graph\Graph2DTreeNode.cs" />
     <Compile Include="Controls\Graph\GraphTree.cs">
       <SubType>Form</SubType>
@@ -154,6 +160,12 @@
     <Compile Include="Controls\View\2D\GameViewMap.Designer.cs">
       <DependentUpon>GameViewMap.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\View\3D\GameView3D.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\View\3D\GameView3D.Designer.cs">
+      <DependentUpon>GameView3D.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\View\GameView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -187,6 +199,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\GL\GLView.resx">
       <DependentUpon>GLView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Graph\3D\Graph3D.resx">
+      <DependentUpon>Graph3D.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Graph\GraphTree.resx">
       <DependentUpon>GraphTree.cs</DependentUpon>
