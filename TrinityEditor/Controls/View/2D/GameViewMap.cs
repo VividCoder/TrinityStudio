@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TrinityEngine.Draw;
+using System.IO;
 namespace TrinityEditor.Controls.View._2D
 {
     public partial class GameViewMap : GameView
@@ -21,6 +22,9 @@ namespace TrinityEditor.Controls.View._2D
 
         public bool DragOn = false;
         public bool RotOn = false;
+        public bool PlotOn = false;
+
+        public TrinityEngine.Graph.GraphMapHit TileHit = null;
 
         public override void SetGameGraph(TrinityEngine.Graph.GameGraph graph)
         {
@@ -38,11 +42,17 @@ namespace TrinityEditor.Controls.View._2D
             if (b == 1)
             {
                 DragOn = true;
+                return;
             }
             if (b == 2)
             {
                 
                 RotOn = true;
+                return;
+            }
+            if (b == 0)
+            {
+                PlotOn = true;
             }
         }
 
@@ -55,6 +65,10 @@ namespace TrinityEditor.Controls.View._2D
             if (b == 2)
             {
                 RotOn = false;
+            }
+            if (b == 0)
+            {
+                PlotOn = false;
             }
         }
 
@@ -88,6 +102,7 @@ namespace TrinityEditor.Controls.View._2D
                 if(hit is TrinityEngine.Graph.GraphMapHit)
                 {
                     var hm = hit as TrinityEngine.Graph.GraphMapHit;
+                    TileHit = hm;
 
                     hm.Map.ClearHighlights();
 
@@ -99,10 +114,60 @@ namespace TrinityEditor.Controls.View._2D
 
             }
 
+            if (PlotOn)
+            {
+
+                if (TileHit != null)
+                {
+                    if (TrinityEditor.Controls.Selector.TileSelector.ActiveTile != null)
+                    {
+                        TileHit.Map.Layers[0].SetTile(TileHit.TileX, TileHit.TileY, TrinityEditor.Controls.Selector.TileSelector.ActiveTile);
+                    }
+                }
+            }
+
             //ase.MouseMove(mx, my, dx, dy);
             //CamX = CamX + dx;
             //CamY = CamY + dy;
 
+
+        }
+
+        public override void LoadState(string path)
+        {
+
+            FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read);
+            BinaryReader r = new BinaryReader(fs);
+
+            r.Close();
+            fs.Close();
+            //f
+                
+
+        //    base.LoadState(path);
+        }
+
+        public override void SaveState(string path)
+        {
+            //base.SaveState(path);
+            FileStream fs = new FileStream(path, FileMode.Create, FileAccess.Write);
+            BinaryWriter w = new BinaryWriter(fs);
+
+            GGraph2D.Write(w);
+
+            w.Flush();
+            fs.Flush();
+            w.Close();
+            fs.Close();
+            w = null;
+            fs = null;
+
+            
+                //{
+             
+           // }
+
+            
 
         }
 

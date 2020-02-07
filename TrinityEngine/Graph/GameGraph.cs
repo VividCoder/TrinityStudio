@@ -77,6 +77,16 @@ namespace TrinityEngine.Graph
 
         }
 
+        public virtual void Write(System.IO.BinaryWriter w)
+        {
+
+        }
+
+        public virtual void Read(System.IO.BinaryReader r)
+        {
+
+        }
+
         public virtual GraphHit PickNode(GraphNode node,int mx,int my)
         {
 

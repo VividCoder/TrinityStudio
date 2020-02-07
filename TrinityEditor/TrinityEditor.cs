@@ -47,6 +47,8 @@ namespace TrinityEditor
         }
         private static TrinityEngine.Map.TileSet.TileSet _CurTiles = null;
 
+        public static EditorMode EditMode = EditorMode.Game2D;
+
         public static void NewMap()
         {
 
@@ -71,9 +73,25 @@ namespace TrinityEditor
             IGameInfo.LevelInfo = new TrinityEngine.Game.LevelInfo();
             IGameInfo.Levels.Add(IGameInfo.LevelInfo);
             LoadActiveLevel();
+            LoadEditorState();
 
         }
 
+        public static void SaveEditorState()
+        {
+
+            CGameView.SaveState("EditState.edit");
+
+        }
+
+        public static void LoadEditorState()
+        {
+            if (System.IO.File.Exists("EditState.edit"))
+            {
+                CGameView.LoadState("EditState.edit");
+            }
+        }
+        
         private void Begin2DMapMode()
         {
             CGameView = new Controls.View._2D.GameViewMap();
@@ -89,7 +107,7 @@ namespace TrinityEditor
             CTileSelect = new Controls.Selector.TileSelector();
 
             CTileSelect.Show(this.dockPanel1, WeifenLuo.WinFormsUI.Docking.DockState.DockBottom);
-            
+            EditMode = EditorMode.Game2D;
 
         }
 
@@ -217,6 +235,12 @@ namespace TrinityEditor
         private void updateToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CTileSelect.RebuildMap();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveEditorState();
+            Environment.Exit(-1);
         }
     }
 }

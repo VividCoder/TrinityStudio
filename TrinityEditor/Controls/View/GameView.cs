@@ -126,5 +126,16 @@ namespace TrinityEditor.Controls.View
 
             //throw new NotImplementedException();
         }
+    
+        public virtual void SaveState(string path)
+        {
+
+        }
+
+        public virtual void LoadState(string path)
+        {
+
+        }
+            
     }
 }

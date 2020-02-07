@@ -19,6 +19,7 @@ namespace TrinityEditor.Controls.Editors.Tileset
         public TrinityEngine.Map.TileSet.TileSet Set = null;
 
         public TrinityEngine.Map.Map PreviewMap = null;
+ 
 
         public TilesetEditor()
         {

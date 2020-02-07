@@ -166,6 +166,7 @@
     <Compile Include="Controls\View\Preview\PreviewGame.Designer.cs">
       <DependentUpon>PreviewGame.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditMode.cs" />
     <Compile Include="FolderExt.cs" />
     <Compile Include="TrinityEditor.cs">
       <SubType>Form</SubType>

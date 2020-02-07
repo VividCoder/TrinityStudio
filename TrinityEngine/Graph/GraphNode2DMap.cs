@@ -71,6 +71,27 @@ namespace TrinityEngine.Graph
             
         }
 
+        public override void Write(System.IO.BinaryWriter w)
+        {
+
+            w.Write(X);
+            w.Write(Y);
+            w.Write(Z);
+            w.Write(Rotation);
+
+            NodeMap.Write(w);
+
+            w.Write(Nodes.Count);
+          
+            foreach(var node in Nodes)
+            {
+                node.Write(w);
+            }
+
+            //base.Write(w);
+
+        }
+
         public override void Render()
         {
             NM = this;

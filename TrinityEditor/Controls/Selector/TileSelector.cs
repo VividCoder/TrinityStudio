@@ -15,6 +15,7 @@ namespace TrinityEditor.Controls.Selector
         public TrinityEngine.Map.Map TileMap;
         public Controls.Graphics.GLView View;
         public TrinityEngine.Map.TileSet.TileSet Set;
+        public static TrinityEngine.Map.Tile.Tile ActiveTile = null;
 
         bool crResources;
 
@@ -145,6 +146,7 @@ namespace TrinityEditor.Controls.Selector
 
                     if (htile != null)
                     {
+                        ActiveTile = htile;
                         //    propGrid.Text = htile.ImagePath;
                         //      propGrid.SelectedObject = htile;
                     }

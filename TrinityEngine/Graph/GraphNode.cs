@@ -78,6 +78,23 @@ namespace TrinityEngine.Graph
             return null;
         }
 
+        public virtual void Write(System.IO.BinaryWriter w)
+        {
+            w.Write(Nodes.Count);
+
+            foreach (var node in Nodes)
+            {
+                node.Write(w);
+            }
+
+        }
+
+        public virtual void Read(System.IO.BinaryReader r)
+        {
+
+        }
+
+
         public virtual void Update() {
 
             UpdateNodes();

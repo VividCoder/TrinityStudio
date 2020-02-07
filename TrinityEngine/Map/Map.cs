@@ -114,26 +114,26 @@ namespace TrinityEngine.Map
         public void Write(System.IO.BinaryWriter w)
         {
 
-            /*
+            
             w.Write(TileWidth);
             w.Write(TileHeight);
-            w.Write(Lights.Count);
-            foreach(TrinityEngine.Scene.GraphLight l in Lights)
-            {
-                l.Write(w);
-            }
-            w.Write(Markers.Count);
-            foreach(TrinityEngine.Scene.GraphMarker m in Markers)
-            {
-                m.Write(w);
-            }
+            //w.Write(Lights.Count);
+           // foreach(TrinityEngine.Scene.GraphLight l in Lights)
+           // {
+            //    l.Write(w);
+           // }
+            //w.Write(Markers.Count);
+            //foreach(TrinityEngine.Scene.GraphMarker m in Markers)
+           // {
+            //    m.Write(w);
+            //}
             w.Write(Layers.Count);
             foreach(var lay in Layers)
             {
                 lay.Write(w);
             }
 
-    */
+    
         }
 
         public void AddMarker(GraphMarker m)
