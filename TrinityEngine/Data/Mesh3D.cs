@@ -112,7 +112,7 @@ namespace TrinityEngine.Data
             //UV = new float[vertices * 2];
             //Bi = new float[vertices * 3];
             //Tan = new float[vertices * 3];
-         //   Viz = new VVBO(vertices, indices);
+            //Viz = new VVBO(vertices, indices);
             VertexData = new Vertex[vertices];
             TriData = new Tri[indices / 3];
 

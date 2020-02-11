@@ -102,9 +102,11 @@
     <Compile Include="Framebuffer\FrameBufferMRT.cs" />
     <Compile Include="Game\GameInfo.cs" />
     <Compile Include="Game\LevelInfo.cs" />
+    <Compile Include="Gen\GeoGen.cs" />
     <Compile Include="Graph\GameGraph.cs" />
     <Compile Include="Graph\GameGraph2D.cs" />
     <Compile Include="Graph\GameGraph3D.cs" />
+    <Compile Include="Graph\GraphEntity.cs" />
     <Compile Include="Graph\GraphHit.cs" />
     <Compile Include="Graph\GraphMapHit.cs" />
     <Compile Include="Graph\GraphNode.cs" />
@@ -124,6 +126,7 @@
     <Compile Include="Material\MaterialBase.cs" />
     <Compile Include="Maths\Maths.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Renderer\RendererBase.cs" />
     <Compile Include="Resonance\Forms\ButtonForm.cs" />
     <Compile Include="Resonance\Forms\CheckBoxForm.cs" />
     <Compile Include="Resonance\Forms\ContextMenuForm.cs" />

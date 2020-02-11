@@ -180,6 +180,7 @@
     </Compile>
     <Compile Include="EditMode.cs" />
     <Compile Include="FolderExt.cs" />
+    <Compile Include="General\GridGen.cs" />
     <Compile Include="TrinityEditor.cs">
       <SubType>Form</SubType>
     </Compile>

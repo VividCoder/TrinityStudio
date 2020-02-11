@@ -65,10 +65,10 @@ namespace TrinityEditor
             
             Begin3DMapMode();
 
-            Hide();
+            //Hide();
 
-            FSplash = new Controls.Splash.VividSplash();
-            FSplash.Show();
+           // FSplash = new Controls.Splash.VividSplash();
+         //  FSplash.Show();
 
             CConsole.DebugMsg("Vivid3D Initialized.");
             IGameInfo = new TrinityEngine.Game.GameInfo();
@@ -104,6 +104,15 @@ namespace TrinityEditor
 
             GGraph = new GameGraph3D();
             CGraphTree.SetGameGraph(GGraph);
+
+            CGameView.BindView();
+            var gv3d = CGameView as Controls.View._3D.GameView3D;
+
+            var g = gv3d.GGraph3D;
+
+            var quad = TrinityEngine.Gen.GeoGen.Quad(100, 100);
+
+            g.AddNode(quad);
 
 
 

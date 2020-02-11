@@ -15,10 +15,29 @@ namespace TrinityEditor.Controls.View._3D
 
         public TrinityEngine.Graph.GameGraph3D GGraph3D = null;
 
+        bool resources = false;
 
         public GameView3D()
         {
             InitializeComponent();
+
+            
+            GGraph3D = new TrinityEngine.Graph.GameGraph3D();
+            GGraph = GGraph3D;
+            
+            View.RenderCall = () =>
+            {
+                if (!resources)
+                {
+                    resources = true;
+                    GGraph.CreateResources();
+                }
+                Console.WriteLine("Rendering 3D ");
+
+                GGraph3D.Render();
+                
+            };
+
         }
 
         public override void SetGameGraph(TrinityEngine.Graph.GameGraph graph)

@@ -65,6 +65,11 @@ namespace TrinityEngine.Graph
 
         }
 
+        public void AddNode(GraphNode node)
+        {
+            RootNode.AddNode(node);
+        }
+
         public virtual GraphHit Pick(int mx,int my)
         {
 

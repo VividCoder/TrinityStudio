@@ -44,6 +44,10 @@ namespace TrinityEditor.Controls.View
         
         }
 
+        public virtual void BindView()
+        {
+         //  ' View.MakeCurrent();
+        }
         private void View_MouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
